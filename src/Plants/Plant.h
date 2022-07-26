@@ -8,6 +8,16 @@
 
 class Plant {
 
+private:
+    int hp;
+    int cost;
+    int x;
+    int y;
+
+    ~Plant();
+
+public:
+    void takeDamage(int damage);
 };
 
 
