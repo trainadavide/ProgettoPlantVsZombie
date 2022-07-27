@@ -9,12 +9,6 @@ Zombie::~Zombie(){
     delete this;
 }
 
-Zombie::Zombie(int hp,float x,int y,int damage) {
-    this->hp=hp;
-    this->x=x;
-    this->y=y;
-    this->damage=damage;
-}
 
 void Zombie::attack(Plant p) {
     p.takeDamage(this->damage);

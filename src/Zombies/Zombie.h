@@ -22,7 +22,6 @@ public:
     int getDamage()const;
     void setDamage(int damage);
 
-    Zombie(int hp,float x,int y,int damage);
     ~Zombie();
 
     void attack(Plant p);
