@@ -13,9 +13,19 @@ private:
     int y;
     int damage;
 public:
+    int getHp() const;
+    void setHp(int hp);
+    float getX()const;
+    void setX(float x);
+    int getY() const;
+    void setY(int y);
+    int getDamage()const;
+    void setDamage(int damage);
+
     Zombie(int hp,float x,int y,int damage);
     ~Zombie();
-    void attack(Plant);
+
+    void attack(Plant p);
     void takeDamage(int damage);
 };
 
