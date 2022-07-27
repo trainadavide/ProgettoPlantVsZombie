@@ -4,7 +4,7 @@
 
 #ifndef PROJECTPVSZ_BASICZOMBIE_H
 #define PROJECTPVSZ_BASICZOMBIE_H
-
+#include "Zombie.h"
 
 class BasicZombie::public Zombie {
 public:

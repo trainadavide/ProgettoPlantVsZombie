@@ -3,4 +3,4 @@ project(PlantVsZombie)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(PlantVsZombie src/main.cpp src/Zombies/Zombie.cpp src/Zombies/Zombie.h src/Zombies/BasicZombie.cpp src/Zombies/BasicZombie.h src/Zombies/TankZombie.cpp src/Zombies/TankZombie.h cmake-build-debug/ShovelZombie.cpp cmake-build-debug/ShovelZombie.h)
+add_executable(PlantVsZombie src/main.cpp src/Zombies/Zombie.cpp src/Zombies/Zombie.h src/Zombies/BasicZombie.cpp src/Zombies/BasicZombie.h src/Zombies/TankZombie.cpp src/Zombies/TankZombie.h src/Zombies/ShovelZombie.cpp src/Zombies/ShovelZombie.h)
