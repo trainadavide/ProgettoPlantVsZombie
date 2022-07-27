@@ -9,11 +9,23 @@
 class Plant {
 
 private:
-    int hp;
-    int cost;
     int x;
     int y;
+    int hp;
+    int cost;
 
+protected:
+    int getHp() const;
+    void setHp(int hp);
+
+    int getX() const;
+    void setX(int x);
+
+    int getY() const;
+    void setY(int y);
+
+    int getCost() const;
+    void setCost(int cost);
     ~Plant();
 
 public:

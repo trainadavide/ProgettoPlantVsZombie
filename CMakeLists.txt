@@ -3,4 +3,4 @@ project(PlantVsZombie)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(PlantVsZombie src/main.cpp src/Plants/Plant.cpp src/Plants/Plant.h)
+add_executable(PlantVsZombie src/main.cpp src/Plants/Plant.cpp src/Plants/Plant.h src/Plants/Nut.cpp src/Plants/Nut.h)
