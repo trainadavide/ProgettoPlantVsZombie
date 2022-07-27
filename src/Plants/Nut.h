@@ -11,13 +11,8 @@
 #define NUT_COST 2
 
 class Nut : public Plant{
-    public:
-        Nut(int x, int y):Plant(){
-            this->setX(x);
-            this->setY(y);
-            this->setHp(NUT_HEALTH);
-            this->setCost(NUT_COST);
-        }
+public:
+    Nut(int x, int y);
 };
 
 
