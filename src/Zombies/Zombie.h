@@ -7,7 +7,16 @@
 
 
 class Zombie {
-
+private:
+    int hp;
+    float x;
+    int y;
+    int damage;
+public:
+    Zombie(int hp,float x,int y,int damage);
+    ~Zombie();
+    void attack(Plant);
+    void takeDamage(int damage);
 };
 
 
