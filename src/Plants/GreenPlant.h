@@ -3,12 +3,14 @@
 //
 
 #ifndef PLANTVSZOMBIE_GREENPLANT_H
-#define PLANTVSZOMBIE_GREENPLANT_
+#define PLANTVSZOMBIE_GREENPLANT_H
 #include "ShooterPlant.h"
 
 class GreenPlant : public ShooterPlant{
 public:
     void shoot();
+
+    GreenPlant(int x, int y);
 };
 
 

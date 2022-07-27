@@ -9,6 +9,8 @@
 class SnowPlant : public ShooterPlant{
 public:
     void shoot();
+
+    SnowPlant(int x, int y);
 };
 
 

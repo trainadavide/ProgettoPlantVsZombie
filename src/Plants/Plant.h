@@ -14,7 +14,7 @@ private:
     int hp;
     int cost;
 
-protected:
+public:
     int getHp() const;
     void setHp(int hp);
 
@@ -26,10 +26,10 @@ protected:
 
     int getCost() const;
     void setCost(int cost);
-    ~Plant();
 
-public:
     void takeDamage(int damage);
+
+    ~Plant();
 };
 
 

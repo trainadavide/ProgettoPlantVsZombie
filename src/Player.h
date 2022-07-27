@@ -5,7 +5,7 @@
 #ifndef PLANTVSZOMBIE_PLAYER_H
 #define PLANTVSZOMBIE_PLAYER_H
 
-
+#include "Map.h"
 
 class Player {
 private:
@@ -16,6 +16,7 @@ private:
 public:
     void increaseEnergy();
     void select(int selected);
+    void place(Map m, int x, int y);
 };
 
 
