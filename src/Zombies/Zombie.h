@@ -6,26 +6,36 @@
 #define PROJECTPVSZ_ZOMBIE_H
 
 
+#include "../Plants/Plant.h"
+
 class Zombie {
 private:
     int hp;
     float x;
     int y;
-    int damage;
+    int strenght;
+    bool iceStatus;
 public:
     int getHp() const;
     void setHp(int hp);
+
     float getX()const;
     void setX(float x);
+
     int getY() const;
     void setY(int y);
-    int getDamage()const;
-    void setDamage(int damage);
+
+    int getStrenght()const;
+    void setStrenght(int damage);
+
+    bool getStatus()const;
+    void setStatus(bool status);
 
     ~Zombie();
 
     void attack(Plant p);
     void takeDamage(int damage);
+
 };
 
 

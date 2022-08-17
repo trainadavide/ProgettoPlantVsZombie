@@ -12,3 +12,9 @@ Bullet::~Bullet() {
 }
 
 Bullet::Bullet(int power, bool ice, float x, int y) : power(power), ice(ice), x(x), y(y) {}
+
+void Bullet::hit(Zombie enemy) {
+    enemy.takeDamage(this->power);
+    if(this->ice)
+        enemy.setStatus(true);
+}

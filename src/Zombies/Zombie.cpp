@@ -4,6 +4,7 @@
 
 #include "Zombie.h"
 #include "stdio.h"
+#include "../Plants/Plant.h"
 
 Zombie::~Zombie(){
     delete this;
@@ -11,7 +12,7 @@ Zombie::~Zombie(){
 
 
 void Zombie::attack(Plant p) {
-    p.takeDamage(this->damage);
+    p.takeDamage(this->strenght);
 }
 
 void Zombie::takeDamage(int damage) {
@@ -26,16 +27,16 @@ void Zombie::setHp(int hp) {
 int Zombie::getHp() const {
     return hp;
 }
-void Zombie::setDamage(int damage) {
-    this->damage=damage;
+void Zombie::setStrenght(int strenght) {
+    this->strenght=strenght;
 }
-int Zombie::getDamage() const {} {
-    return damage;
+int Zombie::getStrenght() const{
+    return strenght;
 }
 void Zombie::setX(float x){
     this->x=x;
 }
-int Zombie::getX() const{
+float Zombie::getX() const{
     return x;
 }
 void Zombie::setY(int y) {
@@ -43,4 +44,12 @@ void Zombie::setY(int y) {
 }
 int Zombie::getY() const {
     return y;
+}
+
+bool Zombie::getStatus() const {
+    return iceStatus;
+}
+
+void Zombie::setStatus(bool status) {
+    this->iceStatus = status;
 }
