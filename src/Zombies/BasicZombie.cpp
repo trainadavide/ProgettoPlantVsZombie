@@ -3,11 +3,12 @@
 //
 
 #include "BasicZombie.h"
-#define BASIC_ZOMBIE_HEALTH 10;
-#define BASIC_ZOMBIE_DAMAGE 1;
+#define BASIC_ZOMBIE_HEALTH 10
+#define BASIC_ZOMBIE_DAMAGE 1
+
 BasicZombie::BasicZombie(float x,int y):Zombie() {
     this->setHp(BASIC_ZOMBIE_HEALTH) ;
     this->setX(x);
     this->setY(y);
-    this->setDamage(BASIC_ZOMBIE_DAMAGE);
+    this->setStrenght(BASIC_ZOMBIE_DAMAGE);
 }

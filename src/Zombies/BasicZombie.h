@@ -6,7 +6,7 @@
 #define PROJECTPVSZ_BASICZOMBIE_H
 #include "Zombie.h"
 
-class BasicZombie::public Zombie {
+class BasicZombie: public Zombie {
 public:
     BasicZombie(float x,int y);
 };

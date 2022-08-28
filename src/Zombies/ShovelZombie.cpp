@@ -3,12 +3,12 @@
 //
 
 #include "ShovelZombie.h"
-#define SHOVEL_ZOMBIE_HEALTH 10;
-#define SHOVEL_ZOMBIE_DAMAGE 2;
+#define SHOVEL_ZOMBIE_HEALTH 10
+#define SHOVEL_ZOMBIE_DAMAGE 2
 
 ShovelZombie::ShovelZombie(float x, int y):Zombie() {
     this->setHp(SHOVEL_ZOMBIE_HEALTH);
     this->setX(x);
     this->setY(y);
-    this->setDamage(SHOVEL_ZOMBIE_DAMAGE);
+    this->setStrenght(SHOVEL_ZOMBIE_DAMAGE);
 }
