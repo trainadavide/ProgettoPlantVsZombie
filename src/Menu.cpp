@@ -7,8 +7,7 @@
 using namespace std;
 using namespace sf;
 MainMenu::MainMenu(float width, float height) {
-
-    if(!font.loadFromFile("C:/Peach Days.ttf")){
+    if(!font.loadFromFile("../font/peach_days/Peach Days.ttf")){
         cout<<"No font is here";
     }
     //Play
