@@ -12,7 +12,7 @@ MainMenu::MainMenu(float width, float height) {
     }
     //Play
     mainMenu[0].setFont(font);
-    mainMenu[0].setFillColor(Color::White);
+    mainMenu[0].setFillColor(Color::Blue);
     mainMenu[0].setString("Play");
     mainMenu[0].setCharacterSize(80);
     mainMenu[0].setPosition(500,250);
