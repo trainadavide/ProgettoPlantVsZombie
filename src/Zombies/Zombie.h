@@ -1,5 +1,5 @@
 //
-// Created by 0260863 on 26/07/2022.
+// Created by Nayla on 26/07/2022.
 //
 
 #ifndef PROJECTPVSZ_ZOMBIE_H
@@ -33,7 +33,7 @@ public:
 
     ~Zombie();
 
-    void attack(Plant p);
+    void attack(Plant p) const;
     void takeDamage(int damage);
 
 };

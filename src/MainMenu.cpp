@@ -2,11 +2,11 @@
 // Created by Nayla on 07/09/2022.
 //
 
-#include "Menu.h"
+#include "MainMenu.h"
 #include <iostream>
 using namespace std;
 using namespace sf;
-MainMenu::MainMenu(float width, float height) {
+MainMenu::MainMenu(unsigned short int width, unsigned short int height) {
     if(!font.loadFromFile("../font/peach_days/Peach Days.ttf")){
         cout<<"No font is here";
     }
@@ -60,4 +60,11 @@ void MainMenu::MoveDown() {
         mainMenu[MainMenuSelected].setFillColor(Color::Blue);
         mainMenu[MainMenuSelected].setCharacterSize(80);
     }
+}
+
+void MainMenu::render(RenderWindow* menu, RectangleShape* background){
+    (*menu).clear();
+    (*menu).draw(*background);
+    this->draw(*menu);
+    (*menu).display();
 }

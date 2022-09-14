@@ -10,10 +10,12 @@ using namespace sf;
 class MainMenu
 {
 public:
-    MainMenu(float width, float height);
+    MainMenu(unsigned short int width, unsigned short int height);
     void draw(RenderWindow& window);
     void MoveUp();
     void MoveDown();
+
+    void render(RenderWindow* menu, RectangleShape* background);
 
     int MainMenuPressed(){
         return MainMenuSelected;
