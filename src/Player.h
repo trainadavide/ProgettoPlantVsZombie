@@ -14,6 +14,7 @@ private:
     int selectedPlant;
 
 public:
+    Player(int energy);
     void increaseEnergy();
     void select(int selected);
     void place(Map m, int x, int y);

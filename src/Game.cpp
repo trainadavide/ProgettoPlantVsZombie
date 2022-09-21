@@ -3,13 +3,21 @@
 //
 
 #include "Game.h"
+
 Game::Game() {
     this->initVariables();
     this->initWindow();
+    this->initTextures();
+
+    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
+        this->buttons[i] = new Button(i, buttonImages[i]);
+
 }
 
 Game::~Game() {
     delete this->window;
+    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
+        delete this->buttons[i];
 }
 
 const bool Game::running() const {
@@ -37,12 +45,19 @@ void Game::pollEvents() {
 
 void Game::update() {
     this->pollEvents();
+    this->updateMousePosition();
+    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
+        this->buttons[i]->update(this->mousePosition);
 }
 
 void Game::render() {
+
     this->window->clear();
 
     this->drawBackground();
+
+    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
+        this->buttons[i]->render(this->window);
 
     this->window->display();
 }
@@ -65,4 +80,16 @@ void Game::drawBackground(){
     back.loadFromFile("../images/BackgroundGame.jpg");
     gameBackground.setTexture(&back);
     this->window->draw(gameBackground);
+}
+
+void Game::updateMousePosition() {
+    this->mousePosition = (Vector2f) sf::Mouse::getPosition(*this->window);
+}
+
+void Game::initTextures() {
+    this->buttonImages[0].loadFromFile("../images/Sunflower.jpg");
+    this->buttonImages[1].loadFromFile("../images/Nut.jpg");
+    this->buttonImages[2].loadFromFile("../images/ShooterPlant.jpg");
+    this->buttonImages[3].loadFromFile("../images/IcePlant.jpg");
+    this->buttonImages[4].loadFromFile("../images/FirePlant.jpg");
 }

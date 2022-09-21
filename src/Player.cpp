@@ -14,6 +14,10 @@
 #define SNOW_PLANT_COST 7
 #define FIRE_PLANT_COST 7
 
+Player::Player(int energy){
+    this->energy = energy;
+}
+
 void Player::increaseEnergy(){
     this->energy+=1;
 };
