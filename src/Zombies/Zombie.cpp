@@ -3,51 +3,43 @@
 //
 
 #include "Zombie.h"
+#include "../Game.h"
+
+void Zombie::initShape() {
+    Texture z;
+    z.loadFromFile("../images/Zombie.png");
+    this->zombie.setTexture(z);
+    this-> zombie.setTextureRect(IntRect(50,50,50,50));
+}
+
+void Zombie::initVariables() {
+    this->type=0;
+    this->hp=0;
+    this->hpMAx=0;
+    this->damage=0;
+    this->points=0;
+}
+//functions
+
+void Zombie::update() {
+    this->zombie.move(-5.f,0);
+}
+void Zombie::render(sf::RenderTarget *target) {
+    target->draw(this->zombie);
+}
+
+Zombie::Zombie(float posX,float posY) {
+    this->initShape();
+    this->initVariables();
+    this->zombie.setPosition(posX,posY);
+
+}
 
 Zombie::~Zombie(){
-    delete this;
-}
 
-
-void Zombie::attack(Plant p) const {
-    p.takeDamage(this->strenght);
 }
-
-void Zombie::takeDamage(int damage) {
-    this->hp-=damage;
-    if(this->hp<=0){
-        this->Zombie::~Zombie();
-    }
-}
-void Zombie::setHp(int healthPoint) {
-    this->hp=healthPoint;
-}
-int Zombie::getHp() const {
-    return hp;
-}
-void Zombie::setStrenght(int str) {
-    this->strenght=str;
-}
-int Zombie::getStrenght() const{
-    return strenght;
-}
-void Zombie::setX(float x){
-    this->x=x;
-}
-float Zombie::getX() const{
-    return x;
-}
-void Zombie::setY(int y) {
-    this->y=y;
-}
-int Zombie::getY() const {
-    return y;
-}
-
-bool Zombie::getStatus() const {
-    return iceStatus;
-}
-
-void Zombie::setStatus(bool status) {
-    this->iceStatus = status;
-}
+//Accessors
+FloatRect Zombie:: getBounds() const
+{
+    return this->zombie.getGlobalBounds();
+};

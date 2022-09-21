@@ -5,18 +5,11 @@
 #ifndef PLANTVSZOMBIE_GAME_H
 #define PLANTVSZOMBIE_GAME_H
 #include <SFML/Graphics.hpp>
+#include "Zombies/Zombie.h"
 using namespace sf;
+using namespace std;
 
 class Game {
-public:
-    Game();
-    virtual ~Game();
-
-    void update();
-    void render();
-
-    const bool running() const;
-
 private:
 
     RenderWindow *window;
@@ -27,6 +20,22 @@ private:
     void initWindow();
     void pollEvents();
     void drawBackground();
+    //Enemies
+    float spawnTimer;
+    float spawnTimerMax;
+    vector<Zombie*> zombies;
+    void initZombies();
+
+public:
+    Game();
+    virtual ~Game();
+
+    void updateZombies();
+    void update();
+    void render();
+    const bool running() const;
+
+
 };
 
 

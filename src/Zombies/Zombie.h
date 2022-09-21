@@ -4,37 +4,32 @@
 
 #ifndef PROJECTPVSZ_ZOMBIE_H
 #define PROJECTPVSZ_ZOMBIE_H
-
-
-#include "../Plants/Plant.h"
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+using namespace sf;
+using namespace std;
 
 class Zombie {
 private:
+    Sprite zombie;
+    int type;
     int hp;
-    float x;
-    int y;
-    int strenght;
-    bool iceStatus;
+    int hpMAx;
+    int damage;
+    int points;
+
+    void initShape();
+    void initVariables();
+
 public:
-    int getHp() const;
-    void setHp(int hp);
-
-    float getX()const;
-    void setX(float x);
-
-    int getY() const;
-    void setY(int y);
-
-    int getStrenght()const;
-    void setStrenght(int damage);
-
-    bool getStatus()const;
-    void setStatus(bool status);
-
+    Zombie(float posX,float posY);
     ~Zombie();
+    //Accessors
+    FloatRect getBounds() const;
+    //functions
+    void update();
+    void render(RenderTarget* target);
 
-    void attack(Plant p) const;
-    void takeDamage(int damage);
 
 };
 
