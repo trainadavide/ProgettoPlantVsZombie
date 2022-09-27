@@ -28,6 +28,7 @@ private:
     VideoMode vm;
     Event e;
     Vector2f mousePosition;
+    Player* player;
 
     Texture buttonImages[NUMBEROFPLANTS];
     Button* buttons[];

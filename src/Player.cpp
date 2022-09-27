@@ -16,6 +16,23 @@
 
 Player::Player(int energy){
     this->energy = energy;
+
+    this->initFont();
+
+    energyDisplay.setCharacterSize(80);
+    energyDisplay.setFillColor(sf::Color::Black);
+    energyDisplay.setPosition(1010,12);
+    energyDisplay.setFont(textFont);
+
+    playerInfo.setSize({600,150});
+    playerInfo.setPosition(1000,10);
+    playerInfo.setFillColor(sf::Color::Cyan);
+}
+
+void Player::initFont() {
+    if(!textFont.loadFromFile("../font/balls-on-the-rampage/BallsoOnTheRampage.ttf")){
+        printf("Font doesn't load");
+    }
 }
 
 void Player::increaseEnergy(){
@@ -71,4 +88,28 @@ void Player::place(Map m, int x, int y) {
                 break;
         }
     }
+}
+
+void Player::render(sf::RenderTarget* target) {
+    target->draw(this->playerInfo);
+
+    char val[5];
+    sprintf(val,"%d", this->energy);
+    sf::String testo = "Energia: ";
+    testo.insert(9,val);
+    energyDisplay.setString(testo);
+
+    target->draw(energyDisplay);
 };
+
+void Player::update(sf::RenderTarget* target){
+    target->draw(this->playerInfo);
+
+    char val[5];
+    sprintf(val,"%d", this->energy);
+    sf::String testo = "Energia: ";
+    testo.insert(9,val);
+    energyDisplay.setString(testo);
+
+    target->draw(energyDisplay);
+}

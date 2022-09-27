@@ -9,6 +9,8 @@ Game::Game() {
     this->initWindow();
     this->initTextures();
 
+    this->player = new Player(5);
+
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i] = new Button(i, buttonImages[i]);
 
@@ -58,6 +60,8 @@ void Game::render() {
 
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i]->render(this->window);
+
+    this->player->render(this->window);
 
     this->window->display();
 }
