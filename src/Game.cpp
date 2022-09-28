@@ -11,9 +11,10 @@ Game::Game() {
 
     this->player = new Player(5);
 
+    this->crono = new Timer();
+
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i] = new Button(i, buttonImages[i]);
-
 }
 
 Game::~Game() {
@@ -48,8 +49,13 @@ void Game::pollEvents() {
 void Game::update() {
     this->pollEvents();
     this->updateMousePosition();
+    this->player->update();
+    if(crono->getTime()>=lastEnergyUp+5) {
+        player->increaseEnergy();
+        lastEnergyUp+=5;
+    }
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
-        this->buttons[i]->update(this->mousePosition);
+        this->buttons[i]->update(this->mousePosition, *player);
 }
 
 void Game::render() {

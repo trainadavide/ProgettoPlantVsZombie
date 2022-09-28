@@ -27,7 +27,7 @@ void Button::render(sf::RenderTarget *target) {
     target->draw(this->shape);
 }
 
-void Button::update(sf::Vector2f mousePosition) {
+void Button::update(sf::Vector2f mousePosition, Player& player) {
     //Idle
     this->buttonState = BTN_IDLE;
 
@@ -51,6 +51,7 @@ void Button::update(sf::Vector2f mousePosition) {
             break;
 
         case BTN_PRESSED:
+            player.select(plantID);
             break;
 
         default:

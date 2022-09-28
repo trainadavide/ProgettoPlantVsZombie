@@ -5,8 +5,10 @@
 #ifndef PLANTVSZOMBIE_GAME_H
 #define PLANTVSZOMBIE_GAME_H
 #define NUMBEROFPLANTS 5
+#include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Graphics/Button.h"
+#include "Graphics/Timer.h"
 #include "Player.h"
 
 using namespace sf;
@@ -29,6 +31,8 @@ private:
     Event e;
     Vector2f mousePosition;
     Player* player;
+    Timer* crono;
+    int lastEnergyUp=0;
 
     Texture buttonImages[NUMBEROFPLANTS];
     Button* buttons[];

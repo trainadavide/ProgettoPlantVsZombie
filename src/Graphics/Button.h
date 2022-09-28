@@ -5,6 +5,7 @@
 #ifndef PLANTVSZOMBIE_BUTTON_H
 #define PLANTVSZOMBIE_BUTTON_H
 #include <SFML/Graphics.hpp>
+#include "../Player.h"
 
 enum button_states{BTN_IDLE = 0, BTN_HOVER, BTN_PRESSED};
 
@@ -15,7 +16,7 @@ public:
     ~Button();
 
     void render(sf::RenderTarget* target);
-    void update(sf::Vector2f mousePosition);
+    void update(sf::Vector2f mousePosition, Player& player);
 
     const bool isPressed() const;
 

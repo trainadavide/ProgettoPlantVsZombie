@@ -21,12 +21,17 @@ Player::Player(int energy){
 
     energyDisplay.setCharacterSize(80);
     energyDisplay.setFillColor(sf::Color::Black);
-    energyDisplay.setPosition(1010,12);
+    energyDisplay.setPosition(1010,10);
     energyDisplay.setFont(textFont);
 
-    playerInfo.setSize({600,150});
+    selectedDisplay.setCharacterSize(80);
+    selectedDisplay.setFillColor(sf::Color::Black);
+    selectedDisplay.setPosition(1010,65);
+    selectedDisplay.setFont(textFont);
+
+    playerInfo.setSize({650,150});
     playerInfo.setPosition(1000,10);
-    playerInfo.setFillColor(sf::Color::Cyan);
+    playerInfo.setFillColor(sf::Color(200,70,20));
 }
 
 void Player::initFont() {
@@ -93,23 +98,35 @@ void Player::place(Map m, int x, int y) {
 void Player::render(sf::RenderTarget* target) {
     target->draw(this->playerInfo);
 
-    char val[5];
-    sprintf(val,"%d", this->energy);
-    sf::String testo = "Energia: ";
-    testo.insert(9,val);
-    energyDisplay.setString(testo);
-
     target->draw(energyDisplay);
+
+    target->draw(selectedDisplay);
 };
 
-void Player::update(sf::RenderTarget* target){
-    target->draw(this->playerInfo);
+void Player::update(){
 
     char val[5];
     sprintf(val,"%d", this->energy);
-    sf::String testo = "Energia: ";
-    testo.insert(9,val);
+    sf::String testo = "Energy: ";
+    testo.insert(8,val);
     energyDisplay.setString(testo);
 
-    target->draw(energyDisplay);
+    switch (this->selectedPlant) {
+        case 0:
+            testo = "Plant: sunflower";
+            break;
+        case 1:
+            testo = "Plant: nut";
+            break;
+        case 2:
+            testo = "Plant: shooter plant";
+            break;
+        case 3:
+            testo = "Plant: ice plant";
+            break;
+        case 4:
+            testo = "Plant: fire plant";
+            break;
+    }
+    selectedDisplay.setString(testo);
 }
