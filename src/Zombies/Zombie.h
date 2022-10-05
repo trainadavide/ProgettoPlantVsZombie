@@ -1,37 +1,40 @@
 //
-// Created by Nayla on 26/07/2022.
+// Created by Nayla on 28/09/2022.
 //
 
-#ifndef PROJECTPVSZ_ZOMBIE_H
-#define PROJECTPVSZ_ZOMBIE_H
+#ifndef PLANTVSZOMBIE_ZOMBIE_H
+#define PLANTVSZOMBIE_ZOMBIE_H
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include <iostream>
 using namespace sf;
 using namespace std;
 
+enum class ZombieType{
+    BASIC,TANK
+};
 class Zombie {
-private:
-    Sprite zombie;
-    int type;
-    int hp;
-    int hpMAx;
-    int damage;
-    int points;
-
-    void initShape();
-    void initVariables();
-
 public:
-    Zombie(float posX,float posY);
+    //constructor & distructor
+    Zombie(float x,float y, ZombieType type);
     ~Zombie();
-    //Accessors
-    FloatRect getBounds() const;
     //functions
     void update();
-    void render(RenderTarget* target);
+    //void isDead();
+    //to draw
+    void initZombie();
+    void renderZombie(RenderTarget* target);
+    //to move
+    FloatRect getBounds() const;
+private:
+    int health;
+    int damage;
+    Texture texture;
+    ZombieType type;
+    Sprite zombie;
 
 
 };
 
 
-#endif //PROJECTPVSZ_ZOMBIE_H
+#endif //PLANTVSZOMBIE_ZOMBIE_H

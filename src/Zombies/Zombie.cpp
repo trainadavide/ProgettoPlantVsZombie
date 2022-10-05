@@ -1,45 +1,56 @@
 //
-// Created by Nayla on 26/07/2022.
+// Created by Nayla on 28/09/2022.
 //
 
+#include <memory>
 #include "Zombie.h"
-#include "../Game.h"
+Zombie::Zombie(float x,float y,ZombieType type) {
+    this->type=type;
+    this->initZombie();
+    zombie.setPosition(x,y);
+    this->update();
 
-void Zombie::initShape() {
-    Texture z;
-    z.loadFromFile("../images/Zombie.png");
-    this->zombie.setTexture(z);
-    this-> zombie.setTextureRect(IntRect(50,50,50,50));
-}
 
-void Zombie::initVariables() {
-    this->type=0;
-    this->hp=0;
-    this->hpMAx=0;
-    this->damage=0;
-    this->points=0;
 }
-//functions
+Zombie::~Zombie() {
+
+};
+void Zombie::initZombie() {
+    switch(type){
+        case ZombieType::BASIC:
+            if(!texture.loadFromFile("../images/BasicZombie.png.png")){
+                cout<<"No font is here";
+            }
+            this->zombie.setTexture(texture);
+            this->health=10;
+            this->damage=2;
+
+            break;
+        case ZombieType::TANK:
+            if(!this->texture.loadFromFile("../images/TankZombie.png.png")){
+                cout<<"No font is here";
+            }
+            this->zombie.setTexture(texture);
+            this->zombie.setScale(0.5,0.5);
+            this->health=15;
+            this->damage=5;
+            break;
+    }
+
+}
 
 void Zombie::update() {
-    this->zombie.move(-5.f,0);
+    this->zombie.move(-2.f,0);
+
 }
-void Zombie::render(sf::RenderTarget *target) {
+
+void Zombie::renderZombie(RenderTarget *target) {
     target->draw(this->zombie);
-}
-
-Zombie::Zombie(float posX,float posY) {
-    this->initShape();
-    this->initVariables();
-    this->zombie.setPosition(posX,posY);
-
-}
-
-Zombie::~Zombie(){
-
 }
 //Accessors
 FloatRect Zombie:: getBounds() const
 {
     return this->zombie.getGlobalBounds();
-};
+}
+
+

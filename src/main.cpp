@@ -2,9 +2,8 @@
 // Created by Nayla on 07/09/2022.
 //
 #include <SFML/Graphics.hpp>
-#include "MainMenu.h"
 #include "Game.h"
-
+#include "MainMenu.h"
 using namespace sf;
 using namespace std;
 
