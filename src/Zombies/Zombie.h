@@ -22,7 +22,6 @@ public:
     void update();
     //void isDead();
     //to draw
-    void initZombie();
     void renderZombie(RenderTarget* target);
     //to move
     FloatRect getBounds() const;
@@ -32,6 +31,7 @@ private:
     Texture texture;
     ZombieType type;
     Sprite zombie;
+    void initZombie();
 
 
 };

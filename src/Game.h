@@ -16,6 +16,7 @@ private:
     RenderWindow *window;
     VideoMode vm;
     Event e;
+    int x;
     Timer* crono;
     void initVariables();
     void initWindow();

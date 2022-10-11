@@ -87,26 +87,29 @@ void Game::updateZombies() {
     rows[2] = this->window->getSize().y / 2.0 - (this->window->getSize().y / 2.0 / 2.0);
     rows[3] = 20;
     rows[4] = this->window->getSize().y;
-
+    x=rand()%11;
+    this->spawnTimer += 0.05f;//velocità con cui spawnare gli zombie
     if (crono->getTime() >=0) {
-        this->spawnTimer += 0.05f;//velocità con cui spawnare gli zombie
         type = ZombieType::BASIC;
-        if (this->spawnTimer >= this->spawnTimerMax) {
-            this->zombies.push_back(new Zombie(this->window->getSize().x, rows[rand() % (6)],
-                                               type));//posizione in cui spawnare gli zombie
-            this->spawnTimer = 0.f;
-        }
-        for (int k = 0; k < this->zombies.size(); k++) {
-            this->zombies[k]->update();
-            //tolgo gli zombie che arrivano infondo
-            if (this->zombies[k]->getBounds().left >
-                this->window->getSize().x)//se gli zombie superano la x dello schermo
-            {
-                this->zombies.erase(this->zombies.begin() + k);
+        if(crono->getTime()>=20){
+            if(x<5){
+                type = ZombieType::BASIC;
+            }
+            else{
+                type = ZombieType::TANK;
             }
         }
-        if(crono->getTime()>=10){
-            type = ZombieType::TANK;
+    }
+    if (this->spawnTimer >= this->spawnTimerMax) {
+        this->zombies.push_back(new Zombie(this->window->getSize().x, rows[rand() % (6)],type));//posizione in cui spawnare gli zombie
+        this->spawnTimer = 0.f;
+    }
+    for (int k = 0; k < this->zombies.size(); k++) {
+        this->zombies[k]->update();
+        //tolgo gli zombie che arrivano infondo
+        if (this->zombies[k]->getBounds().left > this->window->getSize().x)//se gli zombie superano la x dello schermo
+        {
+            this->zombies.erase(this->zombies.begin() + k);
         }
     }
 }
