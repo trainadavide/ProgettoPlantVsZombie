@@ -4,7 +4,7 @@
 
 #include "ShooterPlant.h"
 
-ShooterPlant::ShooterPlant(int x, int y, ShooterType type) {
+ShooterPlant::ShooterPlant(int x, int y, ShooterType type){
     this->x=x;
     this->y=y;
     this->type=type;
@@ -52,3 +52,4 @@ void ShooterPlant::draw(int posx, int posy, sf::RenderTarget* target) {
     this->plant.setPosition(posx,posy);
     target->draw(this->plant);
 }
+

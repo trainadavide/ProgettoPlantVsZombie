@@ -3,8 +3,6 @@
 //
 #include "Map.h"
 #include "Plants/Plant.h"
-#include "Plants/Nut.h"
-#include "Plants/Sunflower.h"
 #include "Plants/ShooterPlant.h"
 
 
@@ -12,14 +10,14 @@ void Map::setPlant(int x, int y, Player &player) {
     switch (player.getSelectedPlant()) {
         case 0:
             if(player.getEnergy()>=SUNFLOWER_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new Sunflower(x,y));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::SUNFLOWER));
                 std::cout<<"Sunflower placed";
                 player.decreaseEnergy(SUNFLOWER_COST);
             }
             break;
         case 1:
             if(player.getEnergy()>=NUT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new Nut(x,y));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::NUT));
                 std::cout<<"Nut placed";
                 player.decreaseEnergy(NUT_COST);
             }
@@ -58,9 +56,10 @@ bool Map::isEmpty(int x, int y) {
 }
 
 Map::Map() {
-    for(auto & i : this->grid){
-        for(auto & j : i)
+    for(auto & i : grid){
+        for(auto & j : i){
             j= nullptr;
+        }
     }
     for(bool & i : lawnmower)
         i=true;
@@ -70,13 +69,14 @@ Map::Map() {
 void Map::draw(sf::RenderTarget *target) {
     sf::Vector2<unsigned int> size =target->getSize();
     garden.setSize({static_cast<float>(size.x*0.68),static_cast<float>(size.y*0.82)});
-    //garden.setOutlineColor(sf::Color::Black);
-    //garden.setOutlineThickness(3);
+    garden.setOutlineThickness(10);
+    garden.setOutlineColor(sf::Color::Black);
     garden.setFillColor(sf::Color::Transparent);
     garden.setPosition((float)(size.x*0.12),(float)(size.y*0.12));
+    target->draw(garden);
 
-    for(int i=0;i<WIDTH_GRID;i++){
-        for(int j=0;j<LENGTH_GRID;j++){
+    for(int i=0;i<LENGTH_GRID;i++){
+        for(int j=0;j<WIDTH_GRID;j++){
             if(grid[i][j]!=nullptr) {
                 int posx=(int)(garden.getPosition().x + (garden.getSize().x/LENGTH_GRID)*(float)i);
                 int posy=(int)(garden.getPosition().y + (garden.getSize().y/WIDTH_GRID)*(float)j);
@@ -105,3 +105,17 @@ bool Map::isOver(const sf::Vector2<float> &point) {
     else
         return false;
 }
+
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "modernize-loop-convert"
+void Map::actions(Player &player) {
+    for(int i=0;i<WIDTH_GRID;i++){
+        for(int j=0;j<LENGTH_GRID;j++){
+            if(grid[i][j]!= nullptr) {
+                if (grid[i][j]->getType() == 's')
+                    grid[i][j]->makeEnergy(player);
+            }
+        }
+    }
+}
+#pragma clang diagnostic pop

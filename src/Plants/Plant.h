@@ -5,8 +5,14 @@
 #ifndef PLANTVSZOMBIE_PLANT_H
 #define PLANTVSZOMBIE_PLANT_H
 #include <SFML/Graphics.hpp>
-#include <stdlib.h>
+#define SUNFLOWER_HEALTH 10
+#define SUNFLOWER_COST 2
+#include <cstdlib>
+#include "../Player.h"
 
+enum class PlantType{
+    SUNFLOWER, NUT
+};
 
 class Plant {
 
@@ -15,6 +21,9 @@ private:
     int y;
     int hp;
     int cost;
+    PlantType type;
+    sf::Sprite plant;
+    sf::Texture t;
 
 public:
     int getHp() const;
@@ -29,11 +38,19 @@ public:
     int getCost() const;
     void setCost(int cost);
 
+    char getType() const;
+
     void takeDamage(int damage);
 
     virtual void draw(int posx, int posy, sf::RenderTarget* target);
 
-    ~Plant();
+    static void makeEnergy(Player &p);
+
+    Plant(int x, int y, PlantType type);
+    Plant();
+    ~Plant()=default;
+
+
 };
 
 

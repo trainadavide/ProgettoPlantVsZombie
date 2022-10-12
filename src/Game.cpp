@@ -57,6 +57,7 @@ void Game::update() {
     this->player->update();
     if(crono->getTime()>=lastEnergyUp+5) {
         player->increaseEnergy();
+        map->actions(*player);
         lastEnergyUp+=5;
     }
     for(auto & button : this->buttons)

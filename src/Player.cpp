@@ -37,7 +37,7 @@ void Player::select(int selected){
     this->selectedPlant=selected;
 }
 
-void Player::render(sf::RenderTarget* target) {//TODO
+void Player::render(sf::RenderTarget* target) {
     target->draw(this->playerInfo);
 
     target->draw(energyDisplay);

@@ -19,7 +19,7 @@ private:
 
 public:
     explicit Player(int energy);
-    void render(sf::RenderTarget* target);//TODO
+    void render(sf::RenderTarget* target);
     void update();
     void increaseEnergy();
     void select(int selected);
