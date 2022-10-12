@@ -4,6 +4,8 @@
 
 #ifndef PLANTVSZOMBIE_PLANT_H
 #define PLANTVSZOMBIE_PLANT_H
+#include <SFML/Graphics.hpp>
+#include <stdlib.h>
 
 
 class Plant {
@@ -28,6 +30,8 @@ public:
     void setCost(int cost);
 
     void takeDamage(int damage);
+
+    virtual void draw(int posx, int posy, sf::RenderTarget* target);
 
     ~Plant();
 };

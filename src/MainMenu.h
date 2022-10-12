@@ -17,13 +17,12 @@ public:
 
     void render(RenderWindow* menu, RectangleShape* background);
 
-    int MainMenuPressed(){
+    int MainMenuPressed() const{
         return MainMenuSelected;
     }
-    ~MainMenu();
+    ~MainMenu() = default;
 private:
     int MainMenuSelected;
     Font font;
     Text mainMenu[Max_main_menu];
-
 };

@@ -13,12 +13,12 @@ class Button {
 public:
     Button(int position, sf::Texture &buttonImage);
 
-    ~Button();
+    ~Button() = default;
 
     void render(sf::RenderTarget* target);
     void update(sf::Vector2f mousePosition, Player& player);
 
-    const bool isPressed() const;
+    bool isPressed() const;
 
 private:
 

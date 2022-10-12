@@ -3,7 +3,7 @@
 //
 
 #include "Button.h"
-#define BUTTONSPOSY 10;
+#define BUTTONSPOSY 10
 
 Button::Button(int position, sf::Texture &buttonImage) {
 
@@ -12,15 +12,11 @@ Button::Button(int position, sf::Texture &buttonImage) {
     this->buttonState=BTN_IDLE;
 
     this->x=180*position;
-    this->y=BUTTONSPOSY;
-    this->shape.setPosition(sf::Vector2f(this->x,this->y));
+    this->y= BUTTONSPOSY;
+    this->shape.setPosition(sf::Vector2f((float)this->x,(float)this->y));
 
     this->shape.setSize(sf::Vector2f(150,150));
     this->shape.setTexture(&buttonImage);
-}
-
-Button::~Button() {
-
 }
 
 void Button::render(sf::RenderTarget *target) {
@@ -60,7 +56,7 @@ void Button::update(sf::Vector2f mousePosition, Player& player) {
     this->shape.setTexture(&buttonImage);
 }
 
-const bool Button::isPressed() const {
+bool Button::isPressed() const {
     if(this->buttonState == BTN_PRESSED)
         return true;
     return false;

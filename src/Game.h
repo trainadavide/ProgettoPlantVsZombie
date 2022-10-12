@@ -10,32 +10,34 @@
 #include "Graphics/Button.h"
 #include "Graphics/Timer.h"
 #include "Player.h"
+#include "Map.h"
 
 using namespace sf;
 
 class Game {
 public:
     Game();
-    virtual ~Game();
+    ~Game();
 
     void update();
     void render();
     virtual void updateMousePosition();
 
-    const bool running() const;
+    bool running() const;
 
 private:
 
-    RenderWindow *window;
+    RenderWindow* window;
     VideoMode vm;
     Event e;
     Vector2f mousePosition;
     Player* player;
     Timer* crono;
+    Map* map;
     int lastEnergyUp=0;
 
     Texture buttonImages[NUMBEROFPLANTS];
-    Button* buttons[];
+    Button* buttons[NUMBEROFPLANTS];
 
     void initVariables();
     void initWindow();

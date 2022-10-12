@@ -13,13 +13,14 @@ private:
     bool ice;
     float x;
     int y;
-    virtual ~Bullet();
 
 public:
     void miss();
-    void hit(Zombie enemy);
+    void hit(Zombie enemy) const;
 
     Bullet(int power, bool ice, float x, int y);
+
+    ~Bullet()=default;
 };
 
 

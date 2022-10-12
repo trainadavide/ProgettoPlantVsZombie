@@ -4,26 +4,22 @@
 
 #include "Game.h"
 
-Game::Game() {
+Game::Game() { // NOLINT(cppcoreguidelines-pro-type-member-init)
     this->initVariables();
     this->initWindow();
     this->initTextures();
 
     this->player = new Player(5);
 
-    this->crono = new Timer();
+    this->crono =new Timer();
+
+    this->map =new Map();
 
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i] = new Button(i, buttonImages[i]);
 }
 
-Game::~Game() {
-    delete this->window;
-    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
-        delete this->buttons[i];
-}
-
-const bool Game::running() const {
+bool Game::running() const {
     return this->window->isOpen();
 }
 
@@ -40,6 +36,15 @@ void Game::pollEvents() {
                     this->window->close();
                 break;
 
+            case sf::Event::MouseButtonReleased:
+                if(this->e.mouseButton.button==sf::Mouse::Left && this->map->isOver(mousePosition)){
+                    Vector2<unsigned int> pos = this->map->getPosition(mousePosition);
+                    this->map->setPlant((int)pos.x,(int)pos.y,*player);
+                }
+
+                break;
+
+
             default:
                 break;
         }
@@ -54,8 +59,8 @@ void Game::update() {
         player->increaseEnergy();
         lastEnergyUp+=5;
     }
-    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
-        this->buttons[i]->update(this->mousePosition, *player);
+    for(auto & button : this->buttons)
+        button->update(this->mousePosition, *player);
 }
 
 void Game::render() {
@@ -64,10 +69,12 @@ void Game::render() {
 
     this->drawBackground();
 
-    for(int i = 0 ; i<NUMBEROFPLANTS; i++)
-        this->buttons[i]->render(this->window);
+    for(auto & button : this->buttons)
+        button->render(this->window);
 
     this->player->render(this->window);
+
+    this->map->draw(this->window);
 
     this->window->display();
 }
@@ -100,6 +107,10 @@ void Game::initTextures() {
     this->buttonImages[0].loadFromFile("../images/Sunflower.jpg");
     this->buttonImages[1].loadFromFile("../images/Nut.jpg");
     this->buttonImages[2].loadFromFile("../images/ShooterPlant.jpg");
-    this->buttonImages[3].loadFromFile("../images/IcePlant.jpg");
+    this->buttonImages[3].loadFromFile("../images/SnowPlant.jpg");
     this->buttonImages[4].loadFromFile("../images/FirePlant.jpg");
+}
+
+Game::~Game() {
+    delete window;
 }

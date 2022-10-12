@@ -8,12 +8,9 @@ void Bullet::miss() {
     this->Bullet::~Bullet();
 }
 
-Bullet::~Bullet() {
-}
-
 Bullet::Bullet(int power, bool ice, float x, int y) : power(power), ice(ice), x(x), y(y) {}
 
-void Bullet::hit(Zombie enemy) {
+void Bullet::hit(Zombie enemy) const{
     enemy.takeDamage(this->power);
     if(this->ice)
         enemy.setStatus(true);

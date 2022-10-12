@@ -50,3 +50,8 @@ void Plant::setCost(int cost) {
     Plant::cost = cost;
 }
 
+void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
+
+}
+
+

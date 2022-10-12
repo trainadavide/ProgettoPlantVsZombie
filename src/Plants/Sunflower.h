@@ -8,11 +8,14 @@
 #include "../Player.h"
 
 class Sunflower : public Plant{
+private:
+    static const int type=0;
+    sf::Sprite plant;
+    sf::Texture t;
 public:
     Sunflower(int x, int y);
-    static void makeEnergy(Player p);
-
-
+    void draw(int posx, int posy, sf::RenderTarget* target);
+    static void makeEnergy(Player &p);
 };
 
 
