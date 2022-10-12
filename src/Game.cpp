@@ -47,7 +47,7 @@ void Game::pollEvents() {
 
 void Game::update() {
     this->pollEvents();
-    srand(time(0));
+    srand(time(NULL));
     this->updateZombies();
 }
 
@@ -82,26 +82,29 @@ void Game::drawBackground(){
 }
 
 void Game::updateZombies() {
-    rows[0] = this->window->getSize().y - (this->window->getSize().y / 2.0);
-    rows[1] = this->window->getSize().y / 2.0 + (this->window->getSize().y / 2.0 / 2.0);
-    rows[2] = this->window->getSize().y / 2.0 - (this->window->getSize().y / 2.0 / 2.0);
-    rows[3] = 20;
-    rows[4] = this->window->getSize().y;
+    rows[0] = this->window->getSize().y/5.60/2.0;
+    rows[1] = rows[0]*2.5;
+    rows[2] = rows[0]*4.5;
+    rows[3] = rows[0]*6.5;
+    rows[4] = rows[0]*8.5;
     x=rand()%11;
-    this->spawnTimer += 0.05f;//velocità con cui spawnare gli zombie
+    this->spawnTimer += 0.03f;//velocità con cui spawnare gli zombie
     if (crono->getTime() >=0) {
         type = ZombieType::BASIC;
         if(crono->getTime()>=20){
-            if(x<5){
+            if(x<=3){
                 type = ZombieType::BASIC;
             }
-            else{
+            else if(x>3 && x<6){
                 type = ZombieType::TANK;
+            }
+            else{
+                type=ZombieType::SHOVEL;
             }
         }
     }
     if (this->spawnTimer >= this->spawnTimerMax) {
-        this->zombies.push_back(new Zombie(this->window->getSize().x, rows[rand() % (6)],type));//posizione in cui spawnare gli zombie
+        this->zombies.push_back(new Zombie(this->window->getSize().x, rows[rand() %5],type));//posizione in cui spawnare gli zombie
         this->spawnTimer = 0.f;
     }
     for (int k = 0; k < this->zombies.size(); k++) {

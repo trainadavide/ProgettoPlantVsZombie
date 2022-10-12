@@ -21,21 +21,29 @@ void Zombie::initZombie() {
             if(!texture.loadFromFile("../images/BasicZombie.png.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setTexture(texture);
             this->health=10;
             this->damage=2;
-
+            this->zombie.setScale(1,1);
             break;
         case ZombieType::TANK:
             if(!this->texture.loadFromFile("../images/TankZombie.png.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setTexture(texture);
-            this->zombie.setScale(0.5,0.5);
+            this->zombie.setScale(0.6,0.6);
             this->health=15;
             this->damage=5;
             break;
+        case ZombieType::SHOVEL:
+            if(!this->texture.loadFromFile("../images/ShovelZombie.png")){
+                cout<<"No font is here";
+            }
+            this->zombie.setScale(0.5,0.5);
+            this->health=15;
+            this->damage=3;
+            break;
+
     }
+    this->zombie.setTexture(texture);
 
 }
 

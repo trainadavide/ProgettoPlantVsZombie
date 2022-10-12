@@ -23,7 +23,7 @@ private:
     void pollEvents();
     void drawBackground();
     //Enemies
-    float rows[5];
+    float rows[5]={0,0,0,0,0};
     float spawnTimer;
     float spawnTimerMax;
     vector<Zombie*> zombies;

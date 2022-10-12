@@ -11,7 +11,7 @@ using namespace sf;
 using namespace std;
 
 enum class ZombieType{
-    BASIC,TANK
+    BASIC,TANK,SHOVEL
 };
 class Zombie {
 public:
