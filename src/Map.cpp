@@ -69,8 +69,6 @@ Map::Map() {
 void Map::draw(sf::RenderTarget *target) {
     sf::Vector2<unsigned int> size =target->getSize();
     garden.setSize({static_cast<float>(size.x*0.68),static_cast<float>(size.y*0.82)});
-    garden.setOutlineThickness(10);
-    garden.setOutlineColor(sf::Color::Black);
     garden.setFillColor(sf::Color::Transparent);
     garden.setPosition((float)(size.x*0.12),(float)(size.y*0.12));
     target->draw(garden);
