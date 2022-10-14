@@ -40,15 +40,17 @@ void Zombie::initZombie() {
             this->zombie.setScale(0.5,0.5);
             this->health=15;
             this->damage=3;
+
             break;
 
     }
     this->zombie.setTexture(texture);
+    this->speed=-2.5f;
 
 }
 
 void Zombie::update() {
-    this->zombie.move(-2.f,0);
+    this->zombie.move(speed,0);
 
 }
 

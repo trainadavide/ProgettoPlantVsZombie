@@ -28,6 +28,7 @@ public:
 private:
     int health;
     int damage;
+    float speed;
     Texture texture;
     ZombieType type;
     Sprite zombie;
