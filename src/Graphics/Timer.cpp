@@ -1,5 +1,5 @@
 //
-// Created by 0260863 on 28/09/2022.
+// Created by david on 28/09/2022.
 //
 
 #include "Timer.h"
@@ -10,11 +10,6 @@ Timer::~Timer() {
 
 Timer::Timer() {
     timer = new Clock();
-    Font textFont;
-    if(!textFont.loadFromFile("../font/BallsoOnTheRampage.ttf")){
-        printf("Font doesn't load");
-    }
-
 }
 
 int Timer::getTime() {

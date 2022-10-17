@@ -2,10 +2,14 @@
 // Created by david on 14/09/2022.
 //
 #include "Game.h"
+#include "Graphics/Button.h"
 #include <cstdlib>
 #include <ctime>
 
-Game::Game() {// NOLINT(cppcoreguidelines-pro-type-member-init)
+
+
+Game::Game() { // NOLINT(cppcoreguidelines-pro-type-member-init)
+
     this->initVariables();
     this->initWindow();
     this->initTextures();
@@ -32,7 +36,7 @@ Game::~Game() {
     }
 }
 
-const bool Game::running() const {
+bool Game::running(){
     return this->window->isOpen();
 }
 
@@ -57,6 +61,7 @@ void Game::pollEvents() {
 
                 break;
 
+
             default:
                 break;
         }
@@ -74,11 +79,14 @@ void Game::update() {
     }
     for(auto & button : this->buttons)
         button->update(this->mousePosition, *player);
+
     srand(time(NULL));
     this->updateZombies();
+
 }
 
 void Game::render() {
+
     this->window->clear();
     this->drawBackground();
     //draw button
@@ -94,6 +102,14 @@ void Game::render() {
     {
         zombie->renderZombie(this->window);
     }
+
+    for(auto & button : this->buttons)
+        button->render(this->window);
+
+    this->player->render(this->window);
+
+    this->map->draw(this->window);
+
     this->window->display();
 }
 
@@ -116,6 +132,9 @@ void Game::drawBackground(){
     gameBackground.setTexture(&back);
     this->window->draw(gameBackground);
 }
+
+
+
 void Game::updateMousePosition() {
     this->mousePosition = (Vector2f) sf::Mouse::getPosition(*this->window);
 }
@@ -127,6 +146,7 @@ void Game::initTextures() {
     this->buttonImages[3].loadFromFile("../images/SnowPlant.jpg");
     this->buttonImages[4].loadFromFile("../images/FirePlant.jpg");
 }
+
 
 void Game::updateZombies() {
     rows[0] = this->window->getSize().y/5.60/2.0;
@@ -168,4 +188,5 @@ void Game::initZombieVariables() {
     this->spawnTimerMax=10;
     this->spawnTimer=this->spawnTimerMax;
 }
+
 

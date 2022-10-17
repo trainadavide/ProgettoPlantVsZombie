@@ -14,6 +14,9 @@
 #include "Zombies/Zombie.h"
 using namespace std;
 
+
+using namespace sf;
+
 class Game {
 public:
     Game();
@@ -21,21 +24,26 @@ public:
     void update();
     void render();
     virtual void updateMousePosition();
-    const bool running() const;
+    bool running();
     //enemies
     void updateZombies();
+
 private:
 
-    RenderWindow *window;
+    RenderWindow* window;
     VideoMode vm;
     Event e;
+
     int x;
+
     Vector2f mousePosition;
     Player* player;
     Timer* crono;
     Map* map;
     int lastEnergyUp=0;
+
     //button
+
     Texture buttonImages[NUMBEROFPLANTS];
     Button* buttons[NUMBEROFPLANTS];
 

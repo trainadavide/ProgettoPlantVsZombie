@@ -3,7 +3,9 @@ project(PlantVsZombie)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(PlantVsZombie src/main.cpp src/MainMenu.cpp src/MainMenu.h src/Game.cpp src/Game.h src/Zombies/Zombie.cpp src/Zombies/Zombie.h src/Graphics/Timer.cpp src/Graphics/Timer.h)
+
+add_executable(PlantVsZombie src/main.cpp src/Game.cpp src/Game.h src/Plants/Plant.cpp src/Plants/Plant.h src/Player.cpp src/Player.h src/Plants/ShooterPlant.cpp src/Plants/ShooterPlant.h src/Bullet.cpp src/Bullet.h src/Map.cpp src/Map.h src/Zombies/Zombie.cpp src/Zombies/Zombie.h src/MainMenu.cpp src/MainMenu.h src/Graphics/Button.cpp src/Graphics/Button.h src/Graphics/Timer.cpp src/Graphics/Timer.h)
+
 
 set (SFML_STATIC_LIBRARIES TRUE)
 set (SFML_DIR C:/SFML/lib/cmake/SFML)

@@ -6,7 +6,10 @@
 #include <iostream>
 using namespace std;
 using namespace sf;
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "UnusedParameter"
 MainMenu::MainMenu(unsigned short int width, unsigned short int height) {
+#pragma clang diagnostic pop
     if(!font.loadFromFile("../font/peach_days/Peach Days.ttf")){
         cout<<"No font is here";
     }
@@ -25,12 +28,10 @@ MainMenu::MainMenu(unsigned short int width, unsigned short int height) {
 
     MainMenuSelected=0;
 }
-MainMenu::~MainMenu() {
 
-}
 void MainMenu::draw(sf::RenderWindow &window) {
-    for(int i=0;i<Max_main_menu;i++){
-        window.draw(mainMenu[i]);
+    for(const auto & i : mainMenu){
+        window.draw(i);
     }
 }
 //MoveUp

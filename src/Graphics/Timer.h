@@ -1,5 +1,5 @@
 //
-// Created by Nayla on 28/09/2022.
+// Created by david on 28/09/2022.
 //
 
 #ifndef PLANTVSZOMBIE_TIMER_H
@@ -22,5 +22,3 @@ private:
 
 
 #endif //PLANTVSZOMBIE_TIMER_H
-
-
