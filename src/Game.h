@@ -4,22 +4,44 @@
 
 #ifndef PLANTVSZOMBIE_GAME_H
 #define PLANTVSZOMBIE_GAME_H
+#define NUMBEROFPLANTS 5
+#include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Zombies/Zombie.h"
+#include "Graphics/Button.h"
 #include "Graphics/Timer.h"
-using namespace sf;
+#include "Player.h"
+#include "Map.h"
+#include "Zombies/Zombie.h"
 using namespace std;
 
 class Game {
+public:
+    Game();
+    ~Game();
+    void update();
+    void render();
+    virtual void updateMousePosition();
+    const bool running() const;
+    //enemies
+    void updateZombies();
 private:
 
     RenderWindow *window;
     VideoMode vm;
     Event e;
     int x;
+    Vector2f mousePosition;
+    Player* player;
     Timer* crono;
+    Map* map;
+    int lastEnergyUp=0;
+    //button
+    Texture buttonImages[NUMBEROFPLANTS];
+    Button* buttons[NUMBEROFPLANTS];
+
     void initVariables();
     void initWindow();
+    void initTextures();
     void pollEvents();
     void drawBackground();
     //Enemies
@@ -30,14 +52,7 @@ private:
     ZombieType type;
     void initZombieVariables();
 
-public:
-    Game();
-    virtual ~Game();
-    void update();
-    void render();
-    const bool running() const;
-    //enemies
-    void updateZombies();
+
 
 
 };

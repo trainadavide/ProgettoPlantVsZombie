@@ -45,7 +45,7 @@ void Zombie::initZombie() {
 
     }
     this->zombie.setTexture(texture);
-    this->speed=-2.5f;
+    this->speed=-5.5f;
 
 }
 
