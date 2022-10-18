@@ -7,6 +7,9 @@
 #include <SFML/Graphics.hpp>
 #define SUNFLOWER_HEALTH 10
 #define SUNFLOWER_COST 2
+#define PROPORTION_CONST 0.08
+#define SHOOTER_PROPORTION_CONST 0.073
+#define PLANTS_IMAGES_DIM 1700
 #include <cstdlib>
 #include "../Player.h"
 
@@ -46,7 +49,7 @@ public:
 
     static void makeEnergy(Player &p);
 
-    Plant(int x, int y, PlantType type);
+    Plant(int x, int y, PlantType type,float screenXSize);
     Plant();
     ~Plant()=default;
 

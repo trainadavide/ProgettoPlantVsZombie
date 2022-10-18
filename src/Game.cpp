@@ -14,6 +14,7 @@ Game::Game() { // NOLINT(cppcoreguidelines-pro-type-member-init)
     this->initWindow();
     this->initTextures();
 
+    printf("%d", this->window->getSize().x);
     this->player = new Player(5);
 
     this->crono = new Timer();
@@ -56,7 +57,7 @@ void Game::pollEvents() {
             case sf::Event::MouseButtonReleased:
                 if(this->e.mouseButton.button==sf::Mouse::Left && this->map->isOver(mousePosition)){
                     Vector2<unsigned int> pos = this->map->getPosition(mousePosition);
-                    this->map->setPlant((int)pos.x,(int)pos.y,*player);
+                    this->map->setPlant((int)pos.x,(int)pos.y,*player, this->window->getSize());
                 }
 
                 break;

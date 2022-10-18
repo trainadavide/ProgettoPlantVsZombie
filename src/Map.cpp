@@ -6,39 +6,39 @@
 #include "Plants/ShooterPlant.h"
 
 
-void Map::setPlant(int x, int y, Player &player) {
+void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSize) {
     switch (player.getSelectedPlant()) {
         case 0:
             if(player.getEnergy()>=SUNFLOWER_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::SUNFLOWER));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::SUNFLOWER, screenSize.x));
                 std::cout<<"Sunflower placed";
                 player.decreaseEnergy(SUNFLOWER_COST);
             }
             break;
         case 1:
             if(player.getEnergy()>=NUT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::NUT));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::NUT, screenSize.x));
                 std::cout<<"Nut placed";
                 player.decreaseEnergy(NUT_COST);
             }
             break;
         case 2:
             if(player.getEnergy()>=GREEN_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::GREEN));
+                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::GREEN, screenSize.x));
                 std::cout<<"GreenPlant placed";
                 player.decreaseEnergy(GREEN_PLANT_COST);
             }
             break;
         case 3:
             if(player.getEnergy()>=SNOW_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::SNOW));
+                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::SNOW, screenSize.x));
                 std::cout<<"SnowPlant placed";
                 player.decreaseEnergy(SNOW_PLANT_COST);
             }
             break;
         case 4:
             if(player.getEnergy()>=FIRE_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::FIRE));
+                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::FIRE, screenSize.x));
                 std::cout<<"FirePlant placed";
                 player.decreaseEnergy(FIRE_PLANT_COST);
             }

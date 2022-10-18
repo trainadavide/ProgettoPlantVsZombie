@@ -5,20 +5,21 @@
 #include "Plant.h"
 #include "cstdio"
 
-Plant::Plant(int x, int y, PlantType type) {
+Plant::Plant(int x, int y, PlantType type, float screenXSize) {
     this->x=x;
     this->y=y;
     this->hp=SUNFLOWER_HEALTH;
     this->cost=SUNFLOWER_COST;
     this->type=type;
+    float scale = (PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;
     switch (type) {
         case PlantType::SUNFLOWER:
-            this->plant.setScale(0.13,0.13);
+            this->plant.setScale(scale,scale);
             this->t.loadFromFile("../images/Sprites/sunflower.png");
             this->plant.setTexture(t);
             break;
         case PlantType::NUT:
-            this->plant.setScale(0.18,0.18);
+            this->plant.setScale(scale,scale);
             this->t.loadFromFile("../images/Sprites/Nut.png");
             this->plant.setTexture(t);
             break;

@@ -6,7 +6,9 @@
 #include "Zombie.h"
 Zombie::Zombie(float x,float y,ZombieType type) {
     this->type=type;
-    this->initZombie();
+
+    float scale = (PROPORTION_CONST*x)/ZOMBIES_IMAGES_DIM;
+    this->initZombie(scale);
     zombie.setPosition(x,y);
     this->update();
 
@@ -15,29 +17,29 @@ Zombie::Zombie(float x,float y,ZombieType type) {
 Zombie::~Zombie() {
 
 };
-void Zombie::initZombie() {
+void Zombie::initZombie(float scale) {
     switch(type){
         case ZombieType::BASIC:
-            if(!texture.loadFromFile("../images/BasicZombie.png.png")){
+            if(!texture.loadFromFile("../images/Sprites/BasicZombie.png")){
                 cout<<"No font is here";
             }
             this->health=10;
             this->damage=2;
-            this->zombie.setScale(1,1);
+            this->zombie.setScale(scale,scale);
             break;
         case ZombieType::TANK:
-            if(!this->texture.loadFromFile("../images/TankZombie.png.png")){
+            if(!this->texture.loadFromFile("../images/Sprites/TankZombie.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setScale(0.6,0.6);
+            this->zombie.setScale(scale,scale);
             this->health=15;
             this->damage=5;
             break;
         case ZombieType::SHOVEL:
-            if(!this->texture.loadFromFile("../images/ShovelZombie.png")){
+            if(!this->texture.loadFromFile("../images/Sprites/ShovelZombie.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setScale(0.5,0.5);
+            this->zombie.setScale(scale,scale);
             this->health=15;
             this->damage=3;
 

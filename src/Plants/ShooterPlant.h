@@ -27,9 +27,9 @@ private:
     sf::Sprite plant;
     sf::Texture t;
     int x, y;
-    void initType();
+    void initType(float scale);
 public:
-    ShooterPlant(int x, int y, ShooterType type);
+    ShooterPlant(int x, int y, ShooterType type, float screenXSize);
     void shoot();
     void draw(int posx, int posy, sf::RenderTarget* target);
 };

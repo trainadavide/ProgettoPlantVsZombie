@@ -4,30 +4,31 @@
 
 #include "ShooterPlant.h"
 
-ShooterPlant::ShooterPlant(int x, int y, ShooterType type){
+ShooterPlant::ShooterPlant(int x, int y, ShooterType type, float screenXSize){
     this->x=x;
     this->y=y;
     this->type=type;
     this->setHp(SHOOTER_PLANT_HEALTH);
-    this->initType();
+    float scale = (SHOOTER_PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;
+    this->initType(scale);
 }
 
-void ShooterPlant::initType() {
+void ShooterPlant::initType(float scale) {
     switch (type) {
         case ShooterType::GREEN:
             this->setCost(GREEN_PLANT_COST);
             this->t.loadFromFile("../images/Sprites/ShooterPlant.png");
-            this->plant.setScale(0.2,0.2);
+            this->plant.setScale(scale,scale);
             break;
         case ShooterType::SNOW:
             this->setCost(SNOW_PLANT_COST);
             this->t.loadFromFile("../images/Sprites/SnowPlant.png");
-            this->plant.setScale(0.22,0.22);
+            this->plant.setScale(scale,scale);
             break;
         case ShooterType::FIRE:
             this->setCost(FIRE_PLANT_COST);
             this->t.loadFromFile("../images/Sprites/FirePlant.png");
-            this->plant.setScale(0.13,0.13);
+            this->plant.setScale(scale,scale);
             break;
     }
     plant.setTexture(t);

@@ -3,7 +3,8 @@
 //
 
 #ifndef PLANTVSZOMBIE_ZOMBIE_H
-#define PLANTVSZOMBIE_ZOMBIE_H
+#define PROPORTION_CONST 0.11
+#define ZOMBIES_IMAGES_DIM 360
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <iostream>
@@ -32,7 +33,7 @@ private:
     Texture texture;
     ZombieType type;
     Sprite zombie;
-    void initZombie();
+    void initZombie(float scale);
 
 
 };
