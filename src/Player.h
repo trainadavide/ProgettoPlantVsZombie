@@ -17,18 +17,18 @@
 
 class Player {
 private:
-    int energy;
-    int selectedPlant=0;
-    sf::RectangleShape playerInfo;
+    int energy; //Energy to place plants
+    int selectedPlant=0; //selected plant's ID
+    sf::RectangleShape playerInfo; //The info that shows up during the game
     sf::Font textFont;
     sf::Text energyDisplay;
     sf::Text selectedDisplay;
     void initFont();
 
 public:
-    explicit Player(int energy, sf::Vector2<unsigned int> screenSize);
-    void render(sf::RenderTarget* target);
-    void update();
+    Player(int energy, sf::Vector2<unsigned int> screenSize);
+    void render(sf::RenderTarget* target); //Draw player info
+    void update(); //Update player info
     void increaseEnergy();
     void select(int selected);
     void decreaseEnergy(int e);

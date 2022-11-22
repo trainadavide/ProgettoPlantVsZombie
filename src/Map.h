@@ -9,6 +9,9 @@
 #include "Plants/Plant.h"
 #include "Player.h"
 
+#define WIDTH_PROPORTION 0.68
+#define HEIGHT_PROPORTION 0.82
+
 #define WIDTH_GRID 5
 #define LENGTH_GRID 9
 

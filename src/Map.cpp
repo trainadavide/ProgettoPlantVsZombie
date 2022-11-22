@@ -5,8 +5,9 @@
 #include "Plants/Plant.h"
 #include "Plants/ShooterPlant.h"
 
-
+//Placement of plants
 void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSize) {
+    // Manage each type of plant and decrease player energy after its placement
     switch (player.getSelectedPlant()) {
         case 0:
             if(player.getEnergy()>=SUNFLOWER_COST && isEmpty(x,y)){
@@ -48,7 +49,7 @@ void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSiz
     }
 
 }
-
+//control if a certain position of the grid is empty
 bool Map::isEmpty(int x, int y) {
     if(this->grid[x][y]== nullptr)
         return true;
@@ -56,25 +57,29 @@ bool Map::isEmpty(int x, int y) {
 }
 
 Map::Map() {
+    //create an empty grid
     for(auto & i : grid){
         for(auto & j : i){
             j= nullptr;
         }
     }
+    //initialize all lawnmower true
     for(bool & i : lawnmower)
         i=true;
 
 }
 
 void Map::draw(sf::RenderTarget *target) {
+    //draw the garden which is the rectangleShape where plants are placed
     sf::Vector2<unsigned int> size =target->getSize();
-    garden.setSize({static_cast<float>(size.x*0.68),static_cast<float>(size.y*0.82)});
+    garden.setSize({static_cast<float>(size.x*WIDTH_PROPORTION),static_cast<float>(size.y*HEIGHT_PROPORTION)});
     garden.setFillColor(sf::Color::Transparent);
     garden.setPosition((float)(size.x*0.12),(float)(size.y*0.12));
     target->draw(garden);
 
     for(int i=0;i<LENGTH_GRID;i++){
         for(int j=0;j<WIDTH_GRID;j++){
+            //if there's a plant in a certain position of the grid -> draw it
             if(grid[i][j]!=nullptr) {
                 int posx=(int)(garden.getPosition().x + (garden.getSize().x/LENGTH_GRID)*(float)i);
                 int posy=(int)(garden.getPosition().y + (garden.getSize().y/WIDTH_GRID)*(float)j);
@@ -85,9 +90,12 @@ void Map::draw(sf::RenderTarget *target) {
 
 }
 
+//Transform mouse position (onClick) to a certain position on the grid
 sf::Vector2<unsigned int> Map::getPosition(const sf::Vector2<float> &point) {
+    //get garden position
     int posx=(int)garden.getPosition().x;
     int posy=(int)garden.getPosition().y;
+    //calculate cells dimensions
     int sizex=(int)garden.getSize().x/LENGTH_GRID;
     int sizey=(int)garden.getSize().y/WIDTH_GRID;
 
@@ -113,11 +121,13 @@ void Map::actions(Player &player) {
         for(int j=0;j<LENGTH_GRID;j++){
             if(grid[i][j]!= nullptr) {
                 switch (grid[i][j]->getType()) {
+                    //if type sunflower
                     case 's':
-                        grid[i][j]->makeEnergy(player);
+                        grid[i][j]->makeEnergy(player);//Sunflower creates energy and gives it to the player
                         break;
+                    //if type shooterplant
                     case 'p':
-                        //TODO ShooterPlants had to shot here
+                        //TODO ShooterPlants have to shoot here
                         break;
                 }
             }

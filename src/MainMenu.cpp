@@ -19,7 +19,7 @@ MainMenu::MainMenu(unsigned short int width, unsigned short int height) {
     mainMenu[0].setString("Play");
     mainMenu[0].setCharacterSize(80);
     mainMenu[0].setPosition(500,250);
-    //EXit
+    //Exit
     mainMenu[1].setFont(font);
     mainMenu[1].setFillColor(Color::White);
     mainMenu[1].setString("Exit");

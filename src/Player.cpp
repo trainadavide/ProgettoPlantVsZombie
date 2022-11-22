@@ -9,16 +9,19 @@ Player::Player(int energy, sf::Vector2<unsigned int> screenSize){
 
     this->initFont();
 
+    //set assets for energy
     energyDisplay.setCharacterSize(screenSize.x*FONT_RESIZABLE);
     energyDisplay.setFillColor(sf::Color::Black);
     energyDisplay.setPosition(screenSize.x*FONT_POSITION_X,screenSize.y*FONT_POSITION_Y);
     energyDisplay.setFont(textFont);
 
+    //set assets selection
     selectedDisplay.setCharacterSize(screenSize.x*FONT_RESIZABLE);
     selectedDisplay.setFillColor(sf::Color::Black);
     selectedDisplay.setPosition(screenSize.x*FONT_POSITION_X,screenSize.y*FONT_POSITION_Y_S);
     selectedDisplay.setFont(textFont);
 
+    //set assets for infoBox
     playerInfo.setSize({static_cast<float>(screenSize.x*INFO_DIM_X),static_cast<float>(screenSize.y*INFO_DIM_Y)});
     playerInfo.setPosition(screenSize.x*INFO_POS_X,screenSize.y*INFO_POS_Y);
     playerInfo.setFillColor(sf::Color(200,70,20));
@@ -46,7 +49,7 @@ void Player::render(sf::RenderTarget* target) {
 }
 
 void Player::update(){
-
+    //update energy to display
     char val[5];
     sprintf(val,"%d", this->energy);
     sf::String testo = "Energy: ";

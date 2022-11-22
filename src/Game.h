@@ -5,6 +5,7 @@
 #ifndef PLANTVSZOMBIE_GAME_H
 #define PLANTVSZOMBIE_GAME_H
 #define NUMBEROFPLANTS 5
+#define ZOMBIE_ALIGNAMENT 0.05
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Graphics/Button.h"
