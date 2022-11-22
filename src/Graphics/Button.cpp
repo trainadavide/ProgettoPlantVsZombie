@@ -7,10 +7,11 @@
 
 Button::Button(int position, sf::Texture &buttonImage) {
 
-    this->plantID = position;
-    this->buttonImage = buttonImage;
-    this->buttonState=BTN_IDLE;
+    this->plantID = position; //Plant ID for each button
+    this->buttonImage = buttonImage; //Images on the buttons
+    this->buttonState=BTN_IDLE; //button state is set on default (idle)
 
+    //Makes the grid of buttons
     this->x=180*position;
     this->y= BUTTONSPOSY;
     this->shape.setPosition(sf::Vector2f((float)this->x,(float)this->y));
@@ -23,17 +24,18 @@ void Button::render(sf::RenderTarget *target) {
     target->draw(this->shape);
 }
 
+//Update the button status
 void Button::update(sf::Vector2f mousePosition, Player& player) {
     //Idle
-    this->buttonState = BTN_IDLE;
+    this->buttonState = BTN_IDLE; //status IDLE: mouse isn't over the button
 
     //Hover
     if(this->shape.getGlobalBounds().contains(mousePosition)){
-        this->buttonState = BTN_HOVER;
+        this->buttonState = BTN_HOVER; //status HOVER: mouse is over the button
 
         //Pressed
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-            this->buttonState = BTN_PRESSED;
+            this->buttonState = BTN_PRESSED; //status PRESSED: the player has selected the plant on this button
         }
     }
 
@@ -43,23 +45,18 @@ void Button::update(sf::Vector2f mousePosition, Player& player) {
             break;
 
         case BTN_HOVER:
-            this->shape.setSize({170,170});
+            this->shape.setSize({170,170}); //when mouse over button became bigger
             break;
 
         case BTN_PRESSED:
-            player.select(plantID);
+            player.select(plantID); //selected plant change
             break;
 
         default:
             break;
     }
-    this->shape.setTexture(&buttonImage);
+    this->shape.setTexture(&buttonImage); //the image is applied on the button
 }
 
-bool Button::isPressed() const {
-    if(this->buttonState == BTN_PRESSED)
-        return true;
-    return false;
-}
 
 

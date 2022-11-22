@@ -4,12 +4,12 @@
 
 #include "ShooterPlant.h"
 
-ShooterPlant::ShooterPlant(int x, int y, ShooterType type, float screenXSize){
+ShooterPlant::ShooterPlant(int x, int y, ShooterType type, unsigned int screenXSize){
     this->x=x;
     this->y=y;
     this->type=type;
     this->setHp(SHOOTER_PLANT_HEALTH);
-    float scale = (SHOOTER_PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;
+    float scale = ((float)SHOOTER_PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;
     this->initType(scale);
 }
 

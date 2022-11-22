@@ -106,12 +106,20 @@ bool Map::isOver(const sf::Vector2<float> &point) {
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "modernize-loop-convert"
+
+//the Map is scanned and each plants makes his actions
 void Map::actions(Player &player) {
     for(int i=0;i<WIDTH_GRID;i++){
         for(int j=0;j<LENGTH_GRID;j++){
             if(grid[i][j]!= nullptr) {
-                if (grid[i][j]->getType() == 's')
-                    grid[i][j]->makeEnergy(player);
+                switch (grid[i][j]->getType()) {
+                    case 's':
+                        grid[i][j]->makeEnergy(player);
+                        break;
+                    case 'p':
+                        //TODO ShooterPlants had to shot here
+                        break;
+                }
             }
         }
     }

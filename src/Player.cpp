@@ -4,23 +4,23 @@
 
 #include "Player.h"
 
-Player::Player(int energy){
+Player::Player(int energy, sf::Vector2<unsigned int> screenSize){
     this->energy = energy;
 
     this->initFont();
 
-    energyDisplay.setCharacterSize(80);
+    energyDisplay.setCharacterSize(screenSize.x*FONT_RESIZABLE);
     energyDisplay.setFillColor(sf::Color::Black);
-    energyDisplay.setPosition(1010,10);
+    energyDisplay.setPosition(screenSize.x*FONT_POSITION_X,screenSize.y*FONT_POSITION_Y);
     energyDisplay.setFont(textFont);
 
-    selectedDisplay.setCharacterSize(80);
+    selectedDisplay.setCharacterSize(screenSize.x*FONT_RESIZABLE);
     selectedDisplay.setFillColor(sf::Color::Black);
-    selectedDisplay.setPosition(1010,65);
+    selectedDisplay.setPosition(screenSize.x*FONT_POSITION_X,screenSize.y*FONT_POSITION_Y_S);
     selectedDisplay.setFont(textFont);
 
-    playerInfo.setSize({650,150});
-    playerInfo.setPosition(1000,10);
+    playerInfo.setSize({static_cast<float>(screenSize.x*INFO_DIM_X),static_cast<float>(screenSize.y*INFO_DIM_Y)});
+    playerInfo.setPosition(screenSize.x*INFO_POS_X,screenSize.y*INFO_POS_Y);
     playerInfo.setFillColor(sf::Color(200,70,20));
 }
 

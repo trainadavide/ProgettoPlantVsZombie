@@ -15,20 +15,18 @@ public:
 
     ~Button() = default;
 
-    void render(sf::RenderTarget* target);
-    void update(sf::Vector2f mousePosition, Player& player);
-
-    bool isPressed() const;
+    void render(sf::RenderTarget* target); //button render
+    void update(sf::Vector2f mousePosition, Player& player); //Update the button status
 
 private:
 
-    sf::RectangleShape shape;
+    sf::RectangleShape shape; //the actual shape of the button
     sf::Texture buttonImage;
     int x;
     int y;
-    short unsigned int plantID;
+    short unsigned int plantID; //plantID associated to each button
 
-    short unsigned buttonState;
+    short unsigned buttonState; //status
 };
 
 

@@ -21,11 +21,14 @@ public:
     ~Zombie();
     //functions
     void update();
-    //void isDead();
+    //set iced status
+    void setStatus(bool status);
     //to draw
     void renderZombie(RenderTarget* target);
     //to move
     FloatRect getBounds() const;
+    //zombie get hitted
+    void takeDamage(int power);
 private:
     int health;
     int damage;
@@ -33,9 +36,9 @@ private:
     Texture texture;
     ZombieType type;
     Sprite zombie;
+    bool status;
     void initZombie(float scale);
-
-
+    bool isDead();
 };
 
 

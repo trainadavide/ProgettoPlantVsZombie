@@ -29,9 +29,9 @@ private:
     int x, y;
     void initType(float scale);
 public:
-    ShooterPlant(int x, int y, ShooterType type, float screenXSize);
+    ShooterPlant(int x, int y, ShooterType type, unsigned int screenXSize);
     void shoot();
-    void draw(int posx, int posy, sf::RenderTarget* target);
+    void draw(int posx, int posy, sf::RenderTarget* target) override;
 };
 
 

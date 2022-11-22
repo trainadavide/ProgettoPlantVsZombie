@@ -6,16 +6,13 @@
 #include <cstdlib>
 #include <ctime>
 
-
-
 Game::Game() { // NOLINT(cppcoreguidelines-pro-type-member-init)
 
     this->initVariables();
     this->initWindow();
     this->initTextures();
 
-    printf("%d", this->window->getSize().x);
-    this->player = new Player(5);
+    this->player = new Player(5,this->window->getSize());
 
     this->crono = new Timer();
 
@@ -98,11 +95,6 @@ void Game::render() {
 
     this->map->draw(this->window);
 
-    //draw zombies
-    for(auto *zombie:this->zombies)
-    {
-        zombie->renderZombie(this->window);
-    }
 
     for(auto & button : this->buttons)
         button->render(this->window);
@@ -110,6 +102,12 @@ void Game::render() {
     this->player->render(this->window);
 
     this->map->draw(this->window);
+
+    //draw zombies
+    for(auto *zombie:this->zombies)
+    {
+        zombie->renderZombie(this->window);
+    }
 
     this->window->display();
 }
@@ -149,6 +147,8 @@ void Game::initTextures() {
 }
 
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "cppcoreguidelines-narrowing-conversions"
 void Game::updateZombies() {
     rows[0] = this->window->getSize().y/5.60/2.0;
     rows[1] = rows[0]*2.5;
@@ -184,6 +184,7 @@ void Game::updateZombies() {
         }
     }
 }
+#pragma clang diagnostic pop
 
 void Game::initZombieVariables() {
     this->spawnTimerMax=10;

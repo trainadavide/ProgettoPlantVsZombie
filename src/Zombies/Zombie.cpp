@@ -2,21 +2,19 @@
 // Created by Nayla on 28/09/2022.
 //
 
-#include <memory>
 #include "Zombie.h"
 Zombie::Zombie(float x,float y,ZombieType type) {
     this->type=type;
 
-    float scale = (PROPORTION_CONST*x)/ZOMBIES_IMAGES_DIM;
+    float scale = (float)(PROPORTION_CONST*x)/ZOMBIES_IMAGES_DIM;
     this->initZombie(scale);
     zombie.setPosition(x,y);
     this->update();
 
 
 }
-Zombie::~Zombie() {
+Zombie::~Zombie() = default;
 
-};
 void Zombie::initZombie(float scale) {
     switch(type){
         case ZombieType::BASIC:
@@ -63,6 +61,23 @@ void Zombie::renderZombie(RenderTarget *target) {
 FloatRect Zombie:: getBounds() const
 {
     return this->zombie.getGlobalBounds();
+}
+
+void Zombie::setStatus(bool status) {
+    this->status=status;
+}
+
+void Zombie::takeDamage(int power) {
+    this->health-=power;
+    if(this->isDead())
+        delete this;
+}
+
+bool Zombie::isDead() {
+    if(this->health<=0)
+        return true;
+    else
+        return false;
 }
 
 
