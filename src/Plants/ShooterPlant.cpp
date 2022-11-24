@@ -34,17 +34,17 @@ void ShooterPlant::initType(float scale) {
     plant.setTexture(t);
 }
 
-void ShooterPlant::shoot() {
+void ShooterPlant::shoot(std::vector<Bullet*> &bullets) {
     std::unique_ptr<Bullet> b;
     switch (type) {
         case ShooterType::GREEN:
-            b = std::unique_ptr<Bullet> (new Bullet(GREEN_PLANT_POWER, false, (float)this->getX(), this->getY()));
+            bullets.push_back(new Bullet(GREEN_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y));
             break;
         case ShooterType::SNOW:
-            b = std::unique_ptr<Bullet> (new Bullet(SNOW_PLANT_POWER, true, (float)this->getX(), this->getY()));
+            bullets.push_back(new Bullet(SNOW_PLANT_POWER, true, (float)this->plant.getPosition().x, this->plant.getPosition().y));
             break;
         case ShooterType::FIRE:
-            b = std::unique_ptr<Bullet> (new Bullet(FIRE_PLANT_POWER, false, (float)this->getX(), this->getY()));
+            bullets.push_back(new Bullet(FIRE_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y));
             break;
     }
 }

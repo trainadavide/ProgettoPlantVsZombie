@@ -2,8 +2,6 @@
 // Created by david on 27/07/2022.
 //
 #include "Map.h"
-#include "Plants/Plant.h"
-#include "Plants/ShooterPlant.h"
 
 //Placement of plants
 void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSize) {
@@ -116,7 +114,7 @@ bool Map::isOver(const sf::Vector2<float> &point) {
 #pragma ide diagnostic ignored "modernize-loop-convert"
 
 //the Map is scanned and each plants makes his actions
-void Map::actions(Player &player) {
+void Map::actions(Player &player, std::vector<Bullet*> &bullets) {
     for(int i=0;i<WIDTH_GRID;i++){
         for(int j=0;j<LENGTH_GRID;j++){
             if(grid[i][j]!= nullptr) {
@@ -128,6 +126,7 @@ void Map::actions(Player &player) {
                     //if type shooterplant
                     case 'p':
                         //TODO ShooterPlants have to shoot here
+                        grid[i][j]->shoot(bullets);
                         break;
                 }
             }

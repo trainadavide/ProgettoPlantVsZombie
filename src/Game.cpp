@@ -21,7 +21,7 @@ Game::Game() {
     //plant's buttons
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i] = new Button(i, buttonImages[i]);
-    //initiaizing zombies
+    //initializing zombies
     this->initZombieVariables();
     this->updateZombies();
 
@@ -78,7 +78,7 @@ void Game::update() {
     if(crono->getTime()>=lastEnergyUp+5) {
         player->increaseEnergy();
         //calls all plants'actions
-        map->actions(*player);
+        map->actions(*player,bullets);
         lastEnergyUp+=5;
     }
     //calls the update of all buttons
@@ -88,6 +88,9 @@ void Game::update() {
     srand(time(NULL));
     //when game updates,update zombies
     this->updateZombies();
+    for(auto *bullet: this->bullets){
+        bullet->update();
+    }
 
 }
 
@@ -107,6 +110,10 @@ void Game::render() {
     for(auto *zombie:this->zombies)
     {
         zombie->renderZombie(this->window);
+    }
+
+    for(auto *bullet: this->bullets){
+        bullet->draw(this->window);
     }
 
     this->window->display();

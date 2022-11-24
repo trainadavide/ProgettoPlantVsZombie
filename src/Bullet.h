@@ -13,10 +13,15 @@ private:
     bool ice;
     float x;
     int y;
+    sf::Sprite bull;
+    sf::Texture t;
 
 public:
     void miss();
     void hit(Zombie enemy) const;
+
+    void draw(sf::RenderTarget *target);
+    void update();
 
     Bullet(int power, bool ice, float x, int y);
 

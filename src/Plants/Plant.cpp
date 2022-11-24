@@ -13,7 +13,7 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
     this->type=type;
     this->cost=BASIC_COST;//Sunflower and Nut has the same cost
 
-    float scale = ((float)PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;/*The dimension (in pixels) of the plants is scaled
+    float scale = ((float)PLANT_PROPORTION_CONST*screenXSize)/PLANTS_IMAGES_DIM;/*The dimension (in pixels) of the plants is scaled
     considering the screen resolution*/
 
     switch (type) {
@@ -78,6 +78,10 @@ void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
 //if the plant is a sunflower it can produce energy
 void Plant::makeEnergy(Player &p) {
         p.increaseEnergy();
+}
+
+void Plant::shoot(std::vector<Bullet*> &bullets) {
+
 }
 
 

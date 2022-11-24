@@ -8,11 +8,12 @@
 #define SUNFLOWER_HEALTH 10
 #define NUT_HEALTH 30
 #define BASIC_COST 2
-#define PROPORTION_CONST 0.08
+#define PLANT_PROPORTION_CONST 0.08
 #define SHOOTER_PROPORTION_CONST 0.073
 #define PLANTS_IMAGES_DIM 1700
 #include <cstdlib>
 #include "../Player.h"
+#include "../Bullet.h"
 
 enum class PlantType{
     SUNFLOWER, NUT
@@ -41,6 +42,8 @@ public:
     char getType();
 
     void takeDamage(int damage);
+
+    virtual void shoot(std::vector<Bullet*> &bullets);
 
     virtual void draw(int posx, int posy, sf::RenderTarget* target);
 

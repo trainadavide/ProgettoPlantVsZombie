@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Plants/Plant.h"
+#include "Plants/ShooterPlant.h"
 #include "Player.h"
 
 #define WIDTH_PROPORTION 0.68
@@ -30,7 +31,7 @@ public:
     Map();
     void draw(sf::RenderTarget* target);
     void setPlant(int x, int y, Player &player, sf::Vector2<unsigned int> screenSize);
-    void actions(Player &player);
+    void actions(Player &player, std::vector<Bullet*> &bullets);
     bool isEmpty(int x, int y);
     bool isOver(const sf::Vector2<float> &point);
     sf::Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);

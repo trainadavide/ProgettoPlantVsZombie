@@ -12,7 +12,8 @@
 #include "Graphics/Timer.h"
 #include "Player.h"
 #include "Map.h"
-#include "Zombies/Zombie.h"
+#include "Bullet.h"
+
 using namespace std;
 
 
@@ -58,6 +59,7 @@ private:
     float spawnTimer;
     float spawnTimerMax;
     vector<Zombie*> zombies;
+    vector<Bullet*> bullets;
     ZombieType type;
     void initZombieVariables();
 

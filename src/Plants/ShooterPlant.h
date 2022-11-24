@@ -14,7 +14,6 @@
 #define SNOW_PLANT_COST 7
 
 #include "Plant.h"
-#include "../Bullet.h"
 #include <SFML/Graphics.hpp>
 #include <memory>
 enum class ShooterType{
@@ -30,7 +29,7 @@ private:
     void initType(float scale);
 public:
     ShooterPlant(int x, int y, ShooterType type, unsigned int screenXSize);
-    void shoot();
+    void shoot(std::vector<Bullet*> &bullets);
     void draw(int posx, int posy, sf::RenderTarget* target) override;
 };
 
