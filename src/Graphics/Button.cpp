@@ -12,7 +12,7 @@ Button::Button(int position, sf::Texture &buttonImage, int xSize) {
     this->buttonState=BTN_IDLE; //button state is set on default (idle)
 
     //Makes the grid of buttons
-    this->x=180*position;
+    this->x=BUTTON_DIS*xSize*position;
     this->y= BUTTONSPOSY;
     this->shape.setPosition(sf::Vector2f((float)this->x,(float)this->y));
 

@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Player.h"
 #define BUTTON_SCALE 0.055
+#define BUTTON_DIS 0.066
 
 enum button_states{BTN_IDLE = 0, BTN_HOVER, BTN_PRESSED};
 
