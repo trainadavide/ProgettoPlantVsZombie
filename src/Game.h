@@ -43,7 +43,7 @@ private:
     Player* player;
     Timer* crono;
     Map* map;
-    int lastEnergyUp=0;
+    bool incremented;
 
     //button
 

@@ -18,6 +18,8 @@ Game::Game() {
     //creating map
     this->map =new Map();
 
+    incremented=false;
+
     //plant's buttons
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
         this->buttons[i] = new Button(i, buttonImages[i], this->window->getSize().x);
@@ -57,7 +59,10 @@ void Game::pollEvents() {
             case sf::Event::MouseButtonReleased:
                 if(this->e.mouseButton.button==sf::Mouse::Left && this->map->isOver(mousePosition)){
                     Vector2<unsigned int> pos = this->map->getPosition(mousePosition);
-                    this->map->setPlant((int)pos.x,(int)pos.y,*player, this->window->getSize());
+                    if(map->isEmpty(pos.x,pos.y)) {
+                        this->map->setPlant((int) pos.x, (int) pos.y, *player, this->window->getSize());
+                    }
+
                 }
 
                 break;
@@ -75,12 +80,14 @@ void Game::update() {
     this->updateMousePosition();
     this->player->update();
     //if 5 seconds have passed since last EnergyUp->EnergyUp
-    if(crono->getTime()>=lastEnergyUp+5) {
+    if(crono->getTime()%5==0 && !incremented) {
         player->increaseEnergy();
         //calls all plants'actions
         map->actions(*player,bullets);
-        lastEnergyUp+=5;
+        incremented = true;
     }
+    if((crono->getTime()-1)%5==0)
+        incremented=false;
     //calls the update of all buttons
     for(auto & button : this->buttons)
         button->update(this->mousePosition, *player, this->window->getSize().x);

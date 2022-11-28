@@ -31,6 +31,7 @@ public:
     ShooterPlant(int x, int y, ShooterType type, unsigned int screenXSize);
     void shoot(std::vector<Bullet*> &bullets);
     void draw(int posx, int posy, sf::RenderTarget* target) override;
+    char getType() override;
 };
 
 

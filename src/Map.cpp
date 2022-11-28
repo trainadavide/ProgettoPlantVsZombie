@@ -109,21 +109,23 @@ bool Map::isOver(const sf::Vector2<float> &point) {
 
 //the Map is scanned and each plants makes his actions
 void Map::actions(Player &player, std::vector<Bullet*> &bullets) {
-    for(int i=0;i<WIDTH_GRID;i++){
-        for(int j=0;j<LENGTH_GRID;j++){
-            if(grid[i][j]!= nullptr) {
-                switch (grid[i][j]->getType()) {
-                    //if type sunflower
-                    case 's':
-                        grid[i][j]->makeEnergy(player);//Sunflower creates energy and gives it to the player
-                        break;
+    for(int i=0;i < WIDTH_GRID*LENGTH_GRID;i++){
+        if(grid[i/WIDTH_GRID][i%WIDTH_GRID] != nullptr){
+            switch (grid[i/WIDTH_GRID][i%WIDTH_GRID]->getType()) {
+                //if type sunflower
+                case 's':
+                    //if (crono.getTime-grid[i][j].getTime)%grid[i][j].getShootSpeed())=0)
+                    grid[i/WIDTH_GRID][i%WIDTH_GRID]->makeEnergy(player);//Sunflower creates energy and gives it to the player
+                    break;
                     //if type shooterplant
-                    case 'p':
-                        grid[i][j]->shoot(bullets);
-                        break;
-                }
+                case 'p':
+                    //if (crono.getTime-grid[i][j].getTime)%grid[i][j].getShootSpeed())=0)
+                    grid[i/WIDTH_GRID][i%WIDTH_GRID]->shoot(bullets);
+                    std::cout<<"i=" << i/WIDTH_GRID<<",j="<<i%WIDTH_GRID<<std::endl;
+                    break;
             }
         }
+
     }
     std::cout<<endl;
 }

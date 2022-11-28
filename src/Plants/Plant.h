@@ -39,7 +39,7 @@ public:
 
     void setCost(int cost);
 
-    char getType();
+    virtual char getType();
 
     void takeDamage(int damage);
 

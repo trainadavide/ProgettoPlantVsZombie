@@ -49,8 +49,6 @@ char Plant::getType() {
             return 's';
         case PlantType::NUT:
             return 'n';
-        default:
-            return 'p';
     }
 }
 

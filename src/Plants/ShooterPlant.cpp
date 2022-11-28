@@ -35,7 +35,6 @@ void ShooterPlant::initType(float scale) {
 }
 
 void ShooterPlant::shoot(std::vector<Bullet*> &bullets) {
-    std::unique_ptr<Bullet> b;
     switch (type) {
         case ShooterType::GREEN:
             bullets.push_back(new Bullet(GREEN_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y));
@@ -52,5 +51,9 @@ void ShooterPlant::shoot(std::vector<Bullet*> &bullets) {
 void ShooterPlant::draw(int posx, int posy, sf::RenderTarget* target) {
     this->plant.setPosition(posx,posy);
     target->draw(this->plant);
+}
+
+char ShooterPlant::getType() {
+    return 'p';
 }
 
