@@ -83,7 +83,7 @@ void Game::update() {
     }
     //calls the update of all buttons
     for(auto & button : this->buttons)
-        button->update(this->mousePosition, *player);
+        button->update(this->mousePosition, *player, this->window->getSize().x);
     //time root
     srand(time(NULL));
     //when game updates,update zombies

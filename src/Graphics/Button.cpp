@@ -25,7 +25,7 @@ void Button::render(sf::RenderTarget *target) {
 }
 
 //Update the button status
-void Button::update(sf::Vector2f mousePosition, Player& player) {
+void Button::update(sf::Vector2f mousePosition, Player& player, int xSize) {
     //Idle
     this->buttonState = BTN_IDLE; //status IDLE: mouse isn't over the button
 
@@ -41,11 +41,11 @@ void Button::update(sf::Vector2f mousePosition, Player& player) {
 
     switch (buttonState) {
         case BTN_IDLE:
-            this->shape.setSize({150,150});
+            this->shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_SCALE),static_cast<float>(xSize*BUTTON_SCALE)});
             break;
 
         case BTN_HOVER:
-            this->shape.setSize({170,170}); //when mouse over button became bigger
+            this->shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_BIG_SCALE),static_cast<float>(xSize*BUTTON_BIG_SCALE)}); //when mouse over button became bigger
             break;
 
         case BTN_PRESSED:

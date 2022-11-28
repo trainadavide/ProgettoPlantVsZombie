@@ -7,6 +7,7 @@
 #include <SFML/Graphics.hpp>
 #include "../Player.h"
 #define BUTTON_SCALE 0.055
+#define BUTTON_BIG_SCALE 0.062
 #define BUTTON_DIS 0.066
 
 enum button_states{BTN_IDLE = 0, BTN_HOVER, BTN_PRESSED};
@@ -18,7 +19,7 @@ public:
     ~Button() = default;
 
     void render(sf::RenderTarget* target); //button render
-    void update(sf::Vector2f mousePosition, Player& player); //Update the button status
+    void update(sf::Vector2f mousePosition, Player& player, int xSize); //Update the button status
 
 private:
 
