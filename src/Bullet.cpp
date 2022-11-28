@@ -19,8 +19,6 @@ Bullet::Bullet(int power, bool ice, float x, int y){
         this->t.loadFromFile("./images/Sprites/Bullet.png");
 
     this->bull.setTexture(t);
-
-    std::cout<<"Bullet";
 }
 
 void Bullet::hit(Zombie enemy) const{

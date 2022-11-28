@@ -10,35 +10,30 @@ void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSiz
         case 0:
             if(player.getEnergy()>=SUNFLOWER_COST && isEmpty(x,y)){
                 grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::SUNFLOWER, screenSize.x));
-                std::cout<<"Sunflower placed";
                 player.decreaseEnergy(SUNFLOWER_COST);
             }
             break;
         case 1:
             if(player.getEnergy()>=NUT_COST && isEmpty(x,y)){
                 grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::NUT, screenSize.x));
-                std::cout<<"Nut placed";
                 player.decreaseEnergy(NUT_COST);
             }
             break;
         case 2:
             if(player.getEnergy()>=GREEN_PLANT_COST && isEmpty(x,y)){
                 grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::GREEN, screenSize.x));
-                std::cout<<"GreenPlant placed";
                 player.decreaseEnergy(GREEN_PLANT_COST);
             }
             break;
         case 3:
             if(player.getEnergy()>=SNOW_PLANT_COST && isEmpty(x,y)){
                 grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::SNOW, screenSize.x));
-                std::cout<<"SnowPlant placed";
                 player.decreaseEnergy(SNOW_PLANT_COST);
             }
             break;
         case 4:
             if(player.getEnergy()>=FIRE_PLANT_COST && isEmpty(x,y)){
                 grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::FIRE, screenSize.x));
-                std::cout<<"FirePlant placed";
                 player.decreaseEnergy(FIRE_PLANT_COST);
             }
             break;
@@ -99,7 +94,6 @@ sf::Vector2<unsigned int> Map::getPosition(const sf::Vector2<float> &point) {
 
     unsigned int x = ((int)point.x - posx) / sizex;
     unsigned int y = ((int)point.y - posy) / sizey;
-    std::cout<<x<<" "<<y<<std::endl;
     return {x,y};
 }
 

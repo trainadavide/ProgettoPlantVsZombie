@@ -212,7 +212,9 @@ void Game::updateBullets() {
         //removing zombies who reach the end
         if (this->bullets[k]->getPosition() > this->window->getSize().x)//checking x position of bullets
         {
+            cout<< this->bullets.size();
             this->bullets.erase(this->bullets.begin() + k);
+            cout<< this->bullets.size();
         }
     }
 }
