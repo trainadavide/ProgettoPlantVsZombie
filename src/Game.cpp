@@ -88,9 +88,7 @@ void Game::update() {
     srand(time(NULL));
     //when game updates,update zombies
     this->updateZombies();
-    for(auto *bullet: this->bullets){
-        bullet->update();
-    }
+    this->updateBullets();
 
 }
 
@@ -135,7 +133,7 @@ void Game::drawBackground(){
     RectangleShape gameBackground;
     gameBackground.setSize(Vector2f(this->window->getSize()));
     Texture back;
-    back.loadFromFile("../images/BackgroundGame.jpg");
+    back.loadFromFile("./images/BackgroundGame.jpg");
     gameBackground.setTexture(&back);
     this->window->draw(gameBackground);
 }
@@ -147,11 +145,11 @@ void Game::updateMousePosition() {
 }
 
 void Game::initTextures() {
-    this->buttonImages[0].loadFromFile("../images/Sunflower.jpg");
-    this->buttonImages[1].loadFromFile("../images/Nut.jpg");
-    this->buttonImages[2].loadFromFile("../images/ShooterPlant.jpg");
-    this->buttonImages[3].loadFromFile("../images/SnowPlant.jpg");
-    this->buttonImages[4].loadFromFile("../images/FirePlant.jpg");
+    this->buttonImages[0].loadFromFile("./images/Sunflower.jpg");
+    this->buttonImages[1].loadFromFile("./images/Nut.jpg");
+    this->buttonImages[2].loadFromFile("./images/ShooterPlant.jpg");
+    this->buttonImages[3].loadFromFile("./images/SnowPlant.jpg");
+    this->buttonImages[4].loadFromFile("./images/FirePlant.jpg");
 }
 
 void Game::initZombieVariables() {
@@ -204,4 +202,17 @@ void Game::updateZombies() {
     }
 #pragma clang diagnostic pop
 
+}
+
+void Game::updateBullets() {
+    for (int k = 0; k < this->bullets.size(); k++) {
+        //to move zombies
+        //TODO using delta time to move zombies
+        this->bullets[k]->update();
+        //removing zombies who reach the end
+        if (this->bullets[k]->getPosition() > this->window->getSize().x)//checking x position of bullets
+        {
+            this->bullets.erase(this->bullets.begin() + k);
+        }
+    }
 }

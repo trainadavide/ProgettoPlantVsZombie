@@ -11,17 +11,15 @@ class Bullet {
 private:
     int power;
     bool ice;
-    float x;
-    int y;
     sf::Sprite bull;
     sf::Texture t;
 
 public:
-    void miss();
     void hit(Zombie enemy) const;
 
     void draw(sf::RenderTarget *target);
     void update();
+    int getPosition();
 
     Bullet(int power, bool ice, float x, int y);
 

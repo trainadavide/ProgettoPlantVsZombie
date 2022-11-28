@@ -20,13 +20,13 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
         case PlantType::SUNFLOWER:
             this->hp=SUNFLOWER_HEALTH;
             this->plant.setScale(scale,scale); //dimension is set with the scale calculated before
-            this->t.loadFromFile("../images/Sprites/sunflower.png"); //sunflower image
+            this->t.loadFromFile("./images/Sprites/sunflower.png"); //sunflower image
             this->plant.setTexture(t);
             break;
         case PlantType::NUT:
             this->hp=NUT_HEALTH;
             this->plant.setScale(scale,scale); //dimension is set with the scale calculated before
-            this->t.loadFromFile("../images/Sprites/Nut.png"); //nut image
+            this->t.loadFromFile("./images/Sprites/Nut.png"); //nut image
             this->plant.setTexture(t);
             break;
     }

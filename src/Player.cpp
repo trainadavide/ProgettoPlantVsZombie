@@ -28,7 +28,7 @@ Player::Player(int energy, sf::Vector2<unsigned int> screenSize){
 }
 
 void Player::initFont() {
-    if(!textFont.loadFromFile("../font/balls-on-the-rampage/BallsoOnTheRampage.ttf")){
+    if(!textFont.loadFromFile("./font/balls-on-the-rampage/BallsoOnTheRampage.ttf")){
         printf("Font doesn't load");
     }
 }

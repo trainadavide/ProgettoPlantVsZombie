@@ -17,7 +17,7 @@ int main(){
     RectangleShape background;
     background.setSize(Vector2f(menu.getSize()));
     Texture MainTexture;
-    MainTexture.loadFromFile("../images/MenuBackground.jpg");
+    MainTexture.loadFromFile("./images/MenuBackground.jpg");
     background.setTexture(&MainTexture);
 
     while(menu.isOpen())

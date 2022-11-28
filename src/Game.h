@@ -29,6 +29,7 @@ public:
     bool running();
     //enemies
     void updateZombies();
+    void updateBullets();
 
 private:
 

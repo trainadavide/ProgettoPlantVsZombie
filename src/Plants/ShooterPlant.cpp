@@ -17,17 +17,17 @@ void ShooterPlant::initType(float scale) {
     switch (type) {
         case ShooterType::GREEN:
             this->setCost(GREEN_PLANT_COST);
-            this->t.loadFromFile("../images/Sprites/ShooterPlant.png");
+            this->t.loadFromFile("./images/Sprites/ShooterPlant.png");
             this->plant.setScale(scale,scale);
             break;
         case ShooterType::SNOW:
             this->setCost(SNOW_PLANT_COST);
-            this->t.loadFromFile("../images/Sprites/SnowPlant.png");
+            this->t.loadFromFile("./images/Sprites/SnowPlant.png");
             this->plant.setScale(scale,scale);
             break;
         case ShooterType::FIRE:
             this->setCost(FIRE_PLANT_COST);
-            this->t.loadFromFile("../images/Sprites/FirePlant.png");
+            this->t.loadFromFile("./images/Sprites/FirePlant.png");
             this->plant.setScale(scale,scale);
             break;
     }

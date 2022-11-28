@@ -4,22 +4,23 @@
 
 #include "Bullet.h"
 
-Bullet::Bullet(int power, bool ice, float x, int y) : power(power), ice(ice), x(x), y(y) {
+Bullet::Bullet(int power, bool ice, float x, int y){
     this->power=power;
     this->ice=ice;
-    this->x=x;
-    this->y=y;
 
     this->bull.setPosition(x+100,y+30);
     this->bull.setScale(0.15,0.15);
-    this->t.loadFromFile("../images/Sprites/Bullet.png");
+
+    if(ice)
+        this->t.loadFromFile("./images/Sprites/IceBullet.png");
+    else if(power==2)
+        this->t.loadFromFile("./images/Sprites/FireBullet.png");
+    else
+        this->t.loadFromFile("./images/Sprites/Bullet.png");
+
     this->bull.setTexture(t);
 
     std::cout<<"Bullet";
-}
-
-void Bullet::miss() {
-    this->Bullet::~Bullet();
 }
 
 void Bullet::hit(Zombie enemy) const{
@@ -36,3 +37,6 @@ void Bullet::update() {
     this->bull.move({10,0});
 }
 
+int Bullet::getPosition(){
+    return this->bull.getPosition().x;
+}

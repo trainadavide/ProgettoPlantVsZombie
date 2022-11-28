@@ -10,7 +10,7 @@ using namespace sf;
 #pragma ide diagnostic ignored "UnusedParameter"
 MainMenu::MainMenu(unsigned short int width, unsigned short int height) {
 #pragma clang diagnostic pop
-    if(!font.loadFromFile("../font/peach_days/Peach Days.ttf")){
+    if(!font.loadFromFile("./font/peach_days/Peach Days.ttf")){
         cout<<"No font is here";
     }
     //Play

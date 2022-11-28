@@ -18,7 +18,7 @@ Zombie::~Zombie() = default;
 void Zombie::initZombie(float scale) {
     switch(type){
         case ZombieType::BASIC:
-            if(!texture.loadFromFile("../images/Sprites/BasicZombie.png")){
+            if(!texture.loadFromFile("./images/Sprites/BasicZombie.png")){
                 cout<<"No font is here";
             }
             this->health=10;
@@ -26,7 +26,7 @@ void Zombie::initZombie(float scale) {
             this->zombie.setScale(scale,scale);
             break;
         case ZombieType::TANK:
-            if(!this->texture.loadFromFile("../images/Sprites/TankZombie.png")){
+            if(!this->texture.loadFromFile("./images/Sprites/TankZombie.png")){
                 cout<<"No font is here";
             }
             this->zombie.setScale(scale,scale);
@@ -34,7 +34,7 @@ void Zombie::initZombie(float scale) {
             this->damage=5;
             break;
         case ZombieType::SHOVEL:
-            if(!this->texture.loadFromFile("../images/Sprites/ShovelZombie.png")){
+            if(!this->texture.loadFromFile("./images/Sprites/ShovelZombie.png")){
                 cout<<"No font is here";
             }
             this->zombie.setScale(scale,scale);
