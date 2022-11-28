@@ -20,7 +20,7 @@ Game::Game() {
 
     //plant's buttons
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
-        this->buttons[i] = new Button(i, buttonImages[i]);
+        this->buttons[i] = new Button(i, buttonImages[i], this->window->getSize().x);
     //initializing zombies
     this->initZombieVariables();
     this->updateZombies();
@@ -212,9 +212,7 @@ void Game::updateBullets() {
         //removing zombies who reach the end
         if (this->bullets[k]->getPosition() > this->window->getSize().x)//checking x position of bullets
         {
-            cout<< this->bullets.size();
             this->bullets.erase(this->bullets.begin() + k);
-            cout<< this->bullets.size();
         }
     }
 }

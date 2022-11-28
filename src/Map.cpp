@@ -119,12 +119,12 @@ void Map::actions(Player &player, std::vector<Bullet*> &bullets) {
                         break;
                     //if type shooterplant
                     case 'p':
-                        //TODO ShooterPlants have to shoot here
                         grid[i][j]->shoot(bullets);
                         break;
                 }
             }
         }
     }
+    std::cout<<endl;
 }
 #pragma clang diagnostic pop

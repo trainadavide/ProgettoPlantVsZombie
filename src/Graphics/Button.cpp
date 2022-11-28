@@ -5,7 +5,7 @@
 #include "Button.h"
 #define BUTTONSPOSY 10
 
-Button::Button(int position, sf::Texture &buttonImage) {
+Button::Button(int position, sf::Texture &buttonImage, int xSize) {
 
     this->plantID = position; //Plant ID for each button
     this->buttonImage = buttonImage; //Images on the buttons
@@ -16,7 +16,7 @@ Button::Button(int position, sf::Texture &buttonImage) {
     this->y= BUTTONSPOSY;
     this->shape.setPosition(sf::Vector2f((float)this->x,(float)this->y));
 
-    this->shape.setSize(sf::Vector2f(150,150));
+    this->shape.setSize(sf::Vector2f(xSize*BUTTON_SCALE,xSize*BUTTON_SCALE));
     this->shape.setTexture(&buttonImage);
 }
 

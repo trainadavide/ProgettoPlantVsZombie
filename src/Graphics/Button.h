@@ -6,12 +6,13 @@
 #define PLANTVSZOMBIE_BUTTON_H
 #include <SFML/Graphics.hpp>
 #include "../Player.h"
+#define BUTTON_SCALE 0.055
 
 enum button_states{BTN_IDLE = 0, BTN_HOVER, BTN_PRESSED};
 
 class Button {
 public:
-    Button(int position, sf::Texture &buttonImage);
+    Button(int position, sf::Texture &buttonImage, int xSize);
 
     ~Button() = default;
 
