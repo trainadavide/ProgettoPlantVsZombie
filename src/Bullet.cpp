@@ -10,8 +10,8 @@ Bullet::Bullet(int power, bool ice, float x, int y) : power(power), ice(ice), x(
     this->x=x;
     this->y=y;
 
-    this->bull.setPosition(x,y);
-    this->bull.setScale(0.2,0.2);
+    this->bull.setPosition(x+100,y+30);
+    this->bull.setScale(0.15,0.15);
     this->t.loadFromFile("../images/Sprites/Bullet.png");
     this->bull.setTexture(t);
 
