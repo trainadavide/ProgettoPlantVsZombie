@@ -4,11 +4,14 @@
 
 #include "Bullet.h"
 
-Bullet::Bullet(int power, bool ice, float x, int y){
+Bullet::Bullet(int power, bool ice, float x, int y, int screenSize){
     this->power=power;
     this->ice=ice;
 
-    this->bull.setPosition(x+100,y+30);
+    int xpos = x + screenSize*BULLETPOSX;
+    int ypos = y + (screenSize/4)*BULLETPOSX;
+
+    this->bull.setPosition(xpos,ypos);
     this->bull.setScale(0.15,0.15);
 
     if(ice)

@@ -34,16 +34,16 @@ void ShooterPlant::initType(float scale) {
     plant.setTexture(t);
 }
 
-void ShooterPlant::shoot(std::vector<Bullet*> &bullets) {
+void ShooterPlant::shoot(std::vector<Bullet*> &bullets, int screensize) {
     switch (type) {
         case ShooterType::GREEN:
-            bullets.push_back(new Bullet(GREEN_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y));
+            bullets.push_back(new Bullet(GREEN_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y,screensize));
             break;
         case ShooterType::SNOW:
-            bullets.push_back(new Bullet(SNOW_PLANT_POWER, true, (float)this->plant.getPosition().x, this->plant.getPosition().y));
+            bullets.push_back(new Bullet(SNOW_PLANT_POWER, true, (float)this->plant.getPosition().x, this->plant.getPosition().y,screensize));
             break;
         case ShooterType::FIRE:
-            bullets.push_back(new Bullet(FIRE_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y));
+            bullets.push_back(new Bullet(FIRE_PLANT_POWER, false, (float)this->plant.getPosition().x, this->plant.getPosition().y,screensize));
             break;
     }
 }

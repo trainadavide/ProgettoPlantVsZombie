@@ -43,7 +43,7 @@ public:
 
     void takeDamage(int damage);
 
-    virtual void shoot(std::vector<Bullet*> &bullets);
+    virtual void shoot(std::vector<Bullet*> &bullets, int screensize){};
 
     virtual void draw(int posx, int posy, sf::RenderTarget* target);
 

@@ -108,7 +108,7 @@ bool Map::isOver(const sf::Vector2<float> &point) {
 #pragma ide diagnostic ignored "modernize-loop-convert"
 
 //the Map is scanned and each plants makes his actions
-void Map::actions(Player &player, std::vector<Bullet*> &bullets) {
+void Map::actions(Player &player, std::vector<Bullet*> &bullets, int screensize) {
     for(int i=0;i < WIDTH_GRID*LENGTH_GRID;i++){
         if(grid[i/WIDTH_GRID][i%WIDTH_GRID] != nullptr){
             switch (grid[i/WIDTH_GRID][i%WIDTH_GRID]->getType()) {
@@ -120,7 +120,7 @@ void Map::actions(Player &player, std::vector<Bullet*> &bullets) {
                     //if type shooterplant
                 case 'p':
                     //if (crono.getTime-grid[i][j].getTime)%grid[i][j].getShootSpeed())=0)
-                    grid[i/WIDTH_GRID][i%WIDTH_GRID]->shoot(bullets);
+                    grid[i/WIDTH_GRID][i%WIDTH_GRID]->shoot(bullets,screensize);
                     std::cout<<"i=" << i/WIDTH_GRID<<",j="<<i%WIDTH_GRID<<std::endl;
                     break;
             }

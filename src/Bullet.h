@@ -4,6 +4,8 @@
 
 #ifndef PLANTVSZOMBIE_BULLET_H
 #define PLANTVSZOMBIE_BULLET_H
+#define BULLETPOSX 0.036
+
 
 #include "Zombies/Zombie.h"
 
@@ -21,7 +23,7 @@ public:
     void update();
     int getPosition();
 
-    Bullet(int power, bool ice, float x, int y);
+    Bullet(int power, bool ice, float x, int y, int screenSize);
 
     ~Bullet()=default;
 };

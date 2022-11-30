@@ -78,9 +78,6 @@ void Plant::makeEnergy(Player &p) {
         p.increaseEnergy();
 }
 
-void Plant::shoot(std::vector<Bullet*> &bullets) {
-
-}
 
 
 Plant::Plant() = default; // NOLINT(cppcoreguidelines-pro-type-member-init)

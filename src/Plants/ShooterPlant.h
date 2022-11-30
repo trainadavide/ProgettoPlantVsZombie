@@ -29,7 +29,7 @@ private:
     void initType(float scale);
 public:
     ShooterPlant(int x, int y, ShooterType type, unsigned int screenXSize);
-    void shoot(std::vector<Bullet*> &bullets);
+    void shoot(std::vector<Bullet*> &bullets, int screensize);
     void draw(int posx, int posy, sf::RenderTarget* target) override;
     char getType() override;
 };

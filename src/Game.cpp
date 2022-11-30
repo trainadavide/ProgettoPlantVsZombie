@@ -83,7 +83,7 @@ void Game::update() {
     if(crono->getTime()%5==0 && !incremented) {
         player->increaseEnergy();
         //calls all plants'actions
-        map->actions(*player,bullets);
+        map->actions(*player,bullets,window->getSize().x);
         incremented = true;
     }
     if((crono->getTime()-1)%5==0)
