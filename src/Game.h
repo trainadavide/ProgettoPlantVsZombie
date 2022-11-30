@@ -5,7 +5,7 @@
 #ifndef PLANTVSZOMBIE_GAME_H
 #define PLANTVSZOMBIE_GAME_H
 #define NUMBEROFPLANTS 5
-#define ZOMBIE_ALIGNAMENT 0.05
+#define ZOMBIE_ALIGNAMENT 0.09
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Graphics/Button.h"
@@ -60,9 +60,11 @@ private:
     float spawnTimer;
     float spawnTimerMax;
     vector<Zombie*> zombies;
+    //bullets
     vector<Bullet*> bullets;
     ZombieType type;
     void initZombieVariables();
+    void Collisions();
 
 
 

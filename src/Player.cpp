@@ -6,6 +6,7 @@
 
 Player::Player(int energy, sf::Vector2<unsigned int> screenSize){
     this->energy = energy;
+    this->energy=100;
 
     this->initFont();
 

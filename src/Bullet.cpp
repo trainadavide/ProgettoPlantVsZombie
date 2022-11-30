@@ -12,7 +12,7 @@ Bullet::Bullet(int power, bool ice, float x, int y, int screenSize){
     int ypos = y + (screenSize/4)*BULLETPOSX;
 
     this->bull.setPosition(xpos,ypos);
-    this->bull.setScale(0.15,0.15);
+    this->bull.setScale((screenSize*BULLETSCALE)/BULLETDIM,(screenSize*BULLETSCALE)/BULLETDIM);
 
     if(ice)
         this->t.loadFromFile("./images/Sprites/IceBullet.png");
@@ -40,4 +40,16 @@ void Bullet::update() {
 
 int Bullet::getPosition(){
     return this->bull.getPosition().x;
+}
+
+FloatRect Bullet::getBounds() const {
+    return bull.getGlobalBounds();
+}
+
+int Bullet::getPower() const {
+    return power;
+}
+
+bool Bullet::isIce() const {
+    return ice;
 }

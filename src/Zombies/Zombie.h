@@ -3,7 +3,7 @@
 //
 
 #ifndef PLANTVSZOMBIE_ZOMBIE_H
-#define PROPORTION_CONST 0.11
+#define PROPORTION_CONST 0.095
 #define ZOMBIES_IMAGES_DIM 360
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
@@ -29,6 +29,9 @@ public:
     FloatRect getBounds() const;
     //zombie get hitted
     void takeDamage(int power);
+
+    void setSpeed(float speed);
+    bool isDead();
 private:
     int health;
     int damage;
@@ -38,7 +41,7 @@ private:
     Sprite zombie;
     bool status;
     void initZombie(float scale);
-    bool isDead();
+
 };
 
 

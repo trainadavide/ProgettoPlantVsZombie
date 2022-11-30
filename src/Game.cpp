@@ -96,6 +96,8 @@ void Game::update() {
     //when game updates,update zombies
     this->updateZombies();
     this->updateBullets();
+    //collisions
+    Collisions();
 
 }
 
@@ -223,3 +225,24 @@ void Game::updateBullets() {
         }
     }
 }
+//collisions
+void Game::Collisions() {
+    if(!bullets.empty() && !zombies.empty())
+    for(int k=0;k<bullets.size(); k++){
+        for(int i=0;i<zombies.size();i++){
+            if(bullets[k]->getBounds().intersects(zombies[i]->getBounds()))
+            {
+                if(bullets[k]->isIce()){
+                    zombies[i]->setSpeed(-2.5f);
+                }
+                zombies[i]->takeDamage(bullets[k]->getPower());
+                if(zombies[i]->isDead()){
+                    zombies.erase(zombies.begin()+i);
+                }
+                bullets.erase(bullets.begin()+k);
+            }
+        }
+    }
+}
+
+

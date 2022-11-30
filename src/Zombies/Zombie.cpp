@@ -69,8 +69,6 @@ void Zombie::setStatus(bool status) {
 
 void Zombie::takeDamage(int power) {
     this->health-=power;
-    if(this->isDead())
-        delete this;
 }
 
 bool Zombie::isDead() {
@@ -78,6 +76,10 @@ bool Zombie::isDead() {
         return true;
     else
         return false;
+}
+
+void Zombie::setSpeed(float speed) {
+    Zombie::speed = speed;
 }
 
 
