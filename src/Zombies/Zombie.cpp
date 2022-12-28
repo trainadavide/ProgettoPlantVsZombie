@@ -82,4 +82,7 @@ void Zombie::setSpeed(float speed) {
     Zombie::speed = speed;
 }
 
+int Zombie::getStrenght(){
+    return damage;
+}
 

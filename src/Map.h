@@ -35,6 +35,8 @@ public:
     bool isEmpty(int x, int y);
     bool isOver(const sf::Vector2<float> &point);
     sf::Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);
+    bool checkCollision(Zombie* enemy);
+    void hitPlant(Zombie* enemy);
 };
 
 

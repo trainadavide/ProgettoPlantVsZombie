@@ -85,6 +85,11 @@ void Game::update() {
         //calls all plants'actions
         map->actions(*player,bullets,window->getSize().x);
         incremented = true;
+        for(int i=0;i<zombies.size();i++){
+            if(map->checkCollision(zombies[i])){
+                map->hitPlant(zombies[i]);
+            }
+        }
     }
     if((crono->getTime()-1)%5==0)
         incremented=false;
@@ -201,8 +206,9 @@ void Game::updateZombies() {
         }
         for (int k = 0; k < zombies.size(); k++) {
             //to move zombies
-            //TODO using delta time to move zombies
-            zombies[k]->update();
+            if(!map->checkCollision(zombies[k]))
+                zombies[k]->update();
+
             //removing zombies who reach the end
             if (zombies[k]->getBounds().left > window->getSize().x)//checking x position of zombies
             {
@@ -241,6 +247,7 @@ void Game::Collisions() {
                     zombies.erase(zombies.begin()+i);
                 }
                 bullets.erase(bullets.begin()+k);
+                i=zombies.size();
             }
         }
     }

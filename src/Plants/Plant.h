@@ -37,6 +37,8 @@ public:
 
     int getY() const;
 
+    int getHp() const;
+
     void setCost(int cost);
 
     virtual char getType();
@@ -46,6 +48,8 @@ public:
     virtual void shoot(std::vector<Bullet*> &bullets, int screensize){};
 
     virtual void draw(int posx, int posy, sf::RenderTarget* target);
+
+    virtual FloatRect getBounds() const;
 
     static void makeEnergy(Player &p);
 

@@ -34,12 +34,6 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
 
 void Plant::takeDamage(int damage) {
     hp-=damage;
-
-    //if the hp are less or equal to zero -> call the destructor
-    if(hp <= 0) {
-        printf("This plant died");
-        this->Plant::~Plant();
-    }
 }
 
 //used to distinguish a type of plant from another on the map
@@ -62,6 +56,9 @@ int Plant::getX() const {
 int Plant::getY() const {
     return y;
 }
+int Plant::getHp() const {
+    return hp;
+}
 //used in the class ShooterPlant to set plant cost
 void Plant::setCost(int c) {
     Plant::cost = c;
@@ -78,7 +75,10 @@ void Plant::makeEnergy(Player &p) {
         p.increaseEnergy();
 }
 
-
+FloatRect Plant:: getBounds() const
+{
+    return plant.getGlobalBounds();
+}
 
 Plant::Plant() = default; // NOLINT(cppcoreguidelines-pro-type-member-init)
 

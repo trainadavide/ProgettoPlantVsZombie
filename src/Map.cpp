@@ -129,4 +129,28 @@ void Map::actions(Player &player, std::vector<Bullet*> &bullets, int screensize)
     }
     std::cout<<endl;
 }
+
+bool Map::checkCollision(Zombie* enemy) {
+    bool collision=false;
+    for (int i = 0; i < WIDTH_GRID*LENGTH_GRID; ++i) {
+        if(grid[i/WIDTH_GRID][i%WIDTH_GRID] != nullptr) {
+            if(grid[i/WIDTH_GRID][i%WIDTH_GRID]->getBounds().intersects(enemy->getBounds()))
+                collision=true;
+        }
+    }
+    return collision;
+}
+
+void Map::hitPlant(Zombie* enemy){
+    for (int i = 0; i < WIDTH_GRID*LENGTH_GRID; ++i) {
+        if(grid[i/WIDTH_GRID][i%WIDTH_GRID] != nullptr) {
+            if(grid[i/WIDTH_GRID][i%WIDTH_GRID]->getBounds().intersects(enemy->getBounds())) {
+                grid[i / WIDTH_GRID][i % WIDTH_GRID]->takeDamage(enemy->getStrenght());
+                if(grid[i / WIDTH_GRID][i % WIDTH_GRID]->getHp()<=0)
+                    grid[i / WIDTH_GRID][i % WIDTH_GRID]=nullptr;
+            }
+        }
+    }
+}
+
 #pragma clang diagnostic pop

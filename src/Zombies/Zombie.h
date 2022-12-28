@@ -32,6 +32,7 @@ public:
 
     void setSpeed(float speed);
     bool isDead();
+    int getStrenght();
 private:
     int health;
     int damage;

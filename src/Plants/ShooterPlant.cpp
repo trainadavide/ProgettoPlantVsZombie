@@ -57,3 +57,7 @@ char ShooterPlant::getType() {
     return 'p';
 }
 
+FloatRect ShooterPlant::getBounds() const {
+    return plant.getGlobalBounds();
+}
+
