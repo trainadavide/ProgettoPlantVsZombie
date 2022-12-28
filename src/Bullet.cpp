@@ -11,35 +11,35 @@ Bullet::Bullet(int power, bool ice, float x, int y, int screenSize){
     int xpos = x + screenSize*BULLETPOSX;
     int ypos = y + (screenSize/4)*BULLETPOSX;
 
-    this->bull.setPosition(xpos,ypos);
-    this->bull.setScale((screenSize*BULLETSCALE)/BULLETDIM,(screenSize*BULLETSCALE)/BULLETDIM);
+    bull.setPosition(xpos,ypos);
+    bull.setScale((screenSize*BULLETSCALE)/BULLETDIM,(screenSize*BULLETSCALE)/BULLETDIM);
 
     if(ice)
-        this->t.loadFromFile("./images/Sprites/IceBullet.png");
+        t.loadFromFile("./images/Sprites/IceBullet.png");
     else if(power==2)
-        this->t.loadFromFile("./images/Sprites/FireBullet.png");
+        t.loadFromFile("./images/Sprites/FireBullet.png");
     else
-        this->t.loadFromFile("./images/Sprites/Bullet.png");
+        t.loadFromFile("./images/Sprites/Bullet.png");
 
-    this->bull.setTexture(t);
+    bull.setTexture(t);
 }
 
 void Bullet::hit(Zombie enemy) const{
-    enemy.takeDamage(this->power);
-    if(this->ice)
+    enemy.takeDamage(power);
+    if(ice)
         enemy.setStatus(true);
 }
 
 void Bullet::draw(sf::RenderTarget *target) {
-    target->draw(this->bull);
+    target->draw(bull);
 }
 
 void Bullet::update() {
-    this->bull.move({10,0});
+    bull.move({10,0});
 }
 
 int Bullet::getPosition(){
-    return this->bull.getPosition().x;
+    return bull.getPosition().x;
 }
 
 FloatRect Bullet::getBounds() const {

@@ -66,6 +66,6 @@ void MainMenu::MoveDown() {
 void MainMenu::render(RenderWindow* menu, RectangleShape* background){
     (*menu).clear();
     (*menu).draw(*background);
-    this->draw(*menu);
+    draw(*menu);
     (*menu).display();
 }

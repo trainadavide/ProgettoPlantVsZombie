@@ -5,7 +5,7 @@
 #include "Timer.h"
 
 Timer::~Timer() {
-    delete this->timer;
+    delete timer;
 }
 
 Timer::Timer() {

@@ -7,45 +7,45 @@
 
 Button::Button(int position, sf::Texture &buttonImage, int xSize) {
 
-    this->plantID = position; //Plant ID for each button
+    plantID = position; //Plant ID for each button
     this->buttonImage = buttonImage; //Images on the buttons
-    this->buttonState=BTN_IDLE; //button state is set on default (idle)
+    buttonState=BTN_IDLE; //button state is set on default (idle)
 
     //Makes the grid of buttons
-    this->x=BUTTON_DIS*xSize*position;
-    this->y= BUTTONSPOSY;
-    this->shape.setPosition(sf::Vector2f((float)this->x,(float)this->y));
+    x=BUTTON_DIS*xSize*position;
+    y= BUTTONSPOSY;
+    shape.setPosition(sf::Vector2f((float)x,(float)y));
 
-    this->shape.setSize(sf::Vector2f(xSize*BUTTON_SCALE,xSize*BUTTON_SCALE));
-    this->shape.setTexture(&buttonImage);
+    shape.setSize(sf::Vector2f(xSize*BUTTON_SCALE,xSize*BUTTON_SCALE));
+    shape.setTexture(&buttonImage);
 }
 
 void Button::render(sf::RenderTarget *target) {
-    target->draw(this->shape);
+    target->draw(shape);
 }
 
 //Update the button status
 void Button::update(sf::Vector2f mousePosition, Player& player, int xSize) {
     //Idle
-    this->buttonState = BTN_IDLE; //status IDLE: mouse isn't over the button
+    buttonState = BTN_IDLE; //status IDLE: mouse isn't over the button
 
     //Hover
-    if(this->shape.getGlobalBounds().contains(mousePosition)){
-        this->buttonState = BTN_HOVER; //status HOVER: mouse is over the button
+    if(shape.getGlobalBounds().contains(mousePosition)){
+        buttonState = BTN_HOVER; //status HOVER: mouse is over the button
 
         //Pressed
         if(sf::Mouse::isButtonPressed(sf::Mouse::Left)){
-            this->buttonState = BTN_PRESSED; //status PRESSED: the player has selected the plant on this button
+            buttonState = BTN_PRESSED; //status PRESSED: the player has selected the plant on this button
         }
     }
 
     switch (buttonState) {
         case BTN_IDLE:
-            this->shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_SCALE),static_cast<float>(xSize*BUTTON_SCALE)});
+            shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_SCALE),static_cast<float>(xSize*BUTTON_SCALE)});
             break;
 
         case BTN_HOVER:
-            this->shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_BIG_SCALE),static_cast<float>(xSize*BUTTON_BIG_SCALE)}); //when mouse over button became bigger
+            shape.setSize(sf::Vector2f{static_cast<float>(xSize*BUTTON_BIG_SCALE),static_cast<float>(xSize*BUTTON_BIG_SCALE)}); //when mouse over button became bigger
             break;
 
         case BTN_PRESSED:
@@ -55,7 +55,7 @@ void Button::update(sf::Vector2f mousePosition, Player& player, int xSize) {
         default:
             break;
     }
-    this->shape.setTexture(&buttonImage); //the image is applied on the button
+    shape.setTexture(&buttonImage); //the image is applied on the button
 }
 
 

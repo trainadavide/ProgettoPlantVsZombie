@@ -8,7 +8,7 @@ Player::Player(int energy, sf::Vector2<unsigned int> screenSize){
     this->energy = energy;
     this->energy=100;
 
-    this->initFont();
+    initFont();
 
     //set assets for energy
     energyDisplay.setCharacterSize(screenSize.x*FONT_RESIZABLE);
@@ -35,14 +35,14 @@ void Player::initFont() {
 }
 
 void Player::increaseEnergy(){
-    this->energy+=1;
+    energy+=1;
 }
 void Player::select(int selected){
-    this->selectedPlant=selected;
+    selectedPlant=selected;
 }
 
 void Player::render(sf::RenderTarget* target) {
-    target->draw(this->playerInfo);
+    target->draw(playerInfo);
 
     target->draw(energyDisplay);
 
@@ -52,12 +52,12 @@ void Player::render(sf::RenderTarget* target) {
 void Player::update(){
     //update energy to display
     char val[5];
-    sprintf(val,"%d", this->energy);
+    sprintf(val,"%d", energy);
     sf::String testo = "Energy: ";
     testo.insert(8,val);
     energyDisplay.setString(testo);
 
-    switch (this->selectedPlant) {
+    switch (selectedPlant) {
         case 0:
             testo = "Plant: sunflower";
             break;
@@ -86,5 +86,5 @@ int Player::getSelectedPlant() const {
 }
 
 void Player::decreaseEnergy(int e) {
-    this->energy-=e;
+    energy-=e;
 }

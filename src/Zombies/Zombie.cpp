@@ -7,9 +7,9 @@ Zombie::Zombie(float x,float y,ZombieType type) {
     this->type=type;
 
     float scale = (float)(PROPORTION_CONST*x)/ZOMBIES_IMAGES_DIM;
-    this->initZombie(scale);
+    initZombie(scale);
     zombie.setPosition(x,y);
-    this->update();
+    update();
 
 
 }
@@ -21,46 +21,46 @@ void Zombie::initZombie(float scale) {
             if(!texture.loadFromFile("./images/Sprites/BasicZombie.png")){
                 cout<<"No font is here";
             }
-            this->health=10;
-            this->damage=2;
-            this->zombie.setScale(scale,scale);
+            health=10;
+            damage=2;
+            zombie.setScale(scale,scale);
             break;
         case ZombieType::TANK:
-            if(!this->texture.loadFromFile("./images/Sprites/TankZombie.png")){
+            if(!texture.loadFromFile("./images/Sprites/TankZombie.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setScale(scale,scale);
-            this->health=15;
-            this->damage=5;
+            zombie.setScale(scale,scale);
+            health=15;
+            damage=5;
             break;
         case ZombieType::SHOVEL:
-            if(!this->texture.loadFromFile("./images/Sprites/ShovelZombie.png")){
+            if(!texture.loadFromFile("./images/Sprites/ShovelZombie.png")){
                 cout<<"No font is here";
             }
-            this->zombie.setScale(scale,scale);
-            this->health=15;
-            this->damage=3;
+            zombie.setScale(scale,scale);
+            health=15;
+            damage=3;
 
             break;
 
     }
-    this->zombie.setTexture(texture);
-    this->speed=-5.5f;
+    zombie.setTexture(texture);
+    speed=-5.5f;
 
 }
 
 void Zombie::update() {
-    this->zombie.move(speed,0);
+    zombie.move(speed,0);
 
 }
 
 void Zombie::renderZombie(RenderTarget *target) {
-    target->draw(this->zombie);
+    target->draw(zombie);
 }
 //Accessors
 FloatRect Zombie:: getBounds() const
 {
-    return this->zombie.getGlobalBounds();
+    return zombie.getGlobalBounds();
 }
 
 void Zombie::setStatus(bool status) {
@@ -68,11 +68,11 @@ void Zombie::setStatus(bool status) {
 }
 
 void Zombie::takeDamage(int power) {
-    this->health-=power;
+    health-=power;
 }
 
 bool Zombie::isDead() {
-    if(this->health<=0)
+    if(health<=0)
         return true;
     else
         return false;

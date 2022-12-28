@@ -44,7 +44,7 @@ void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSiz
 }
 //control if a certain position of the grid is empty
 bool Map::isEmpty(int x, int y) {
-    if(this->grid[x][y]== nullptr)
+    if(grid[x][y]== nullptr)
         return true;
     return false;
 }
@@ -98,7 +98,7 @@ sf::Vector2<unsigned int> Map::getPosition(const sf::Vector2<float> &point) {
 }
 
 bool Map::isOver(const sf::Vector2<float> &point) {
-    if(this->garden.getGlobalBounds().contains(point))
+    if(garden.getGlobalBounds().contains(point))
         return true;
     else
         return false;
