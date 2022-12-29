@@ -7,7 +7,6 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Plants/Plant.h"
-#include "Plants/ShooterPlant.h"
 #include "Player.h"
 
 #define WIDTH_PROPORTION 0.68

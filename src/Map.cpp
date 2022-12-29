@@ -21,19 +21,19 @@ void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSiz
             break;
         case 2:
             if(player.getEnergy()>=GREEN_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::GREEN, screenSize.x));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::GREEN, screenSize.x));
                 player.decreaseEnergy(GREEN_PLANT_COST);
             }
             break;
         case 3:
             if(player.getEnergy()>=SNOW_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::SNOW, screenSize.x));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::SNOW, screenSize.x));
                 player.decreaseEnergy(SNOW_PLANT_COST);
             }
             break;
         case 4:
             if(player.getEnergy()>=FIRE_PLANT_COST && isEmpty(x,y)){
-                grid[x][y]=std::unique_ptr<Plant>(new ShooterPlant(x,y,ShooterType::FIRE, screenSize.x));
+                grid[x][y]=std::unique_ptr<Plant>(new Plant(x,y,PlantType::FIRE, screenSize.x));
                 player.decreaseEnergy(FIRE_PLANT_COST);
             }
             break;

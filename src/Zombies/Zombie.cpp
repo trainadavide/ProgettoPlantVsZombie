@@ -51,10 +51,13 @@ void Zombie::initZombie(float scale) {
 
 void Zombie::update() {
     zombie.move(speed,0);
-
 }
 
 void Zombie::renderZombie(RenderTarget *target) {
+    if(c!= nullptr) {
+        if (c->getElapsedTime().asMilliseconds() >= 200)
+            normalTexture();
+    }
     target->draw(zombie);
 }
 //Accessors
@@ -69,6 +72,8 @@ void Zombie::setStatus(bool status) {
 
 void Zombie::takeDamage(int power) {
     health-=power;
+    hittedTexture();
+    c = new Clock();
 }
 
 bool Zombie::isDead() {
@@ -84,5 +89,45 @@ void Zombie::setSpeed(float speed) {
 
 int Zombie::getStrenght(){
     return damage;
+}
+
+void Zombie::hittedTexture() {
+    switch(type) {
+        case ZombieType::BASIC:
+            if (!texture.loadFromFile("./images/Sprites/BasicZombieHitted.png")) {
+                cout << "No font is here";
+            }
+            break;
+        case ZombieType::TANK:
+            if (!texture.loadFromFile("./images/Sprites/TankZombieHitted.png")) {
+                cout << "No font is here";
+            }
+
+            break;
+        case ZombieType::SHOVEL:
+            if (!texture.loadFromFile("./images/Sprites/ShovelZombieHitted.png")) {
+                cout << "No font is here";
+            }
+    }
+}
+
+void Zombie::normalTexture() {
+    switch(type) {
+        case ZombieType::BASIC:
+            if (!texture.loadFromFile("./images/Sprites/BasicZombie.png")) {
+                cout << "No font is here";
+            }
+            break;
+        case ZombieType::TANK:
+            if (!texture.loadFromFile("./images/Sprites/TankZombie.png")) {
+                cout << "No font is here";
+            }
+
+            break;
+        case ZombieType::SHOVEL:
+            if (!texture.loadFromFile("./images/Sprites/ShovelZombie.png")) {
+                cout << "No font is here";
+            }
+    }
 }
 

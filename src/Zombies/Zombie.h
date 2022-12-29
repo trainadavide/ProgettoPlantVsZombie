@@ -42,6 +42,9 @@ private:
     Sprite zombie;
     bool status;
     void initZombie(float scale);
+    void hittedTexture();
+    void normalTexture();
+    Clock* c= nullptr;
 
 };
 
