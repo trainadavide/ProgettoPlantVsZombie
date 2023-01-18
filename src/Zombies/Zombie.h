@@ -45,6 +45,7 @@ private:
     void hittedTexture();
     void normalTexture();
     Clock* c= nullptr;
+    bool hitted=false;
 
 };
 

@@ -11,6 +11,7 @@ Zombie::Zombie(float x,float y,ZombieType type) {
     zombie.setPosition(x,y);
     update();
 
+    c=new Clock();
 
 }
 Zombie::~Zombie() = default;
@@ -54,7 +55,7 @@ void Zombie::update() {
 }
 
 void Zombie::renderZombie(RenderTarget *target) {
-    if(c!= nullptr) {
+    if(hitted) {
         if (c->getElapsedTime().asMilliseconds() >= 200)
             normalTexture();
     }
@@ -73,7 +74,8 @@ void Zombie::setStatus(bool status) {
 void Zombie::takeDamage(int power) {
     health-=power;
     hittedTexture();
-    c = new Clock();
+    c->restart();
+    hitted=true;
 }
 
 bool Zombie::isDead() {

@@ -10,6 +10,8 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
     this->x=x;
     this->y=y;
 
+    c = new Clock();
+
     this->type=type;
     cost=BASIC_COST;//Sunflower and Nut has the same cost
 
@@ -55,7 +57,7 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
 void Plant::takeDamage(int damage) {
     hp-=damage;
     hittedTexture();
-    c = new Clock();
+    c->restart();
     hitted=true;
 }
 
@@ -78,7 +80,7 @@ int Plant::getHp() const {
 //Plant is drawn on the target, target refers to the window
 void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
     plant.setPosition((float)posx,(float)posy);
-    if(c!= nullptr && hitted){
+    if(hitted){
         if(c->getElapsedTime().asMilliseconds()>=200) {
             normalTexture();
             hitted=false;
