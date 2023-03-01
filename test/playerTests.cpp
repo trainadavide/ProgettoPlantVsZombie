@@ -4,9 +4,7 @@
 #include "lib/googletest/include/gtest/gtest.h"
 #include <SFML/Graphics.hpp>
 #include "../src/Plants/Plant.h"
-#include "../src/Game.h"
 #include "../src/MainMenu.h"
-#include "../src/Player.h"
 
 TEST(Player, constructor){
     int energy=5;
