@@ -34,6 +34,8 @@ public:
     void decreaseEnergy(int e);
     int getEnergy() const;
     int getSelectedPlant() const;
+    sf::Text getenergyisplay();
+    sf::RectangleShape getplayerInfo();
 };
 
 

@@ -9,7 +9,6 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
     //Plant position
     this->x=x;
     this->y=y;
-
     c = new Clock();
 
     this->type=type;
@@ -158,6 +157,16 @@ void Plant::shoot(vector<Bullet *> &bullets, int screensize) {
             break;
     }
 }
+
+Sprite Plant::getSprite(PlantType Type) {
+    Plant plant(0,0,Type,30);
+    return plant.plant;
+}
+
+bool Plant::getHitted() {
+    return hitted;
+}
+
 
 Plant::Plant() = default; // NOLINT(cppcoreguidelines-pro-type-member-init)
 

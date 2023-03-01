@@ -34,7 +34,7 @@ private:
     int hp;
     int cost;
     PlantType type;
-    sf::Sprite plant;
+    Sprite plant;
     sf::Texture t;
     void hittedTexture();
     void normalTexture();
@@ -47,6 +47,9 @@ public:
     int getHp() const;
 
     char getType();
+
+    bool getHitted();
+    Sprite getSprite(PlantType Type);
 
     void takeDamage(int damage);
 

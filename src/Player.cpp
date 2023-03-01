@@ -88,3 +88,12 @@ int Player::getSelectedPlant() const {
 void Player::decreaseEnergy(int e) {
     energy-=e;
 }
+
+sf::Text Player::getenergyisplay() {
+    return energyDisplay;
+}
+
+sf::RectangleShape Player::getplayerInfo() {
+    return playerInfo;
+}
+

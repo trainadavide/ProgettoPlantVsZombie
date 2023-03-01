@@ -27,20 +27,25 @@ public:
     void renderZombie(RenderTarget* target);
     //to move
     FloatRect getBounds() const;
-    //zombie get hitted
+    //zombie get hit
     void takeDamage(int power);
-
+    //getter and setter
+    Sprite getSprite(ZombieType type);
+    ZombieType getType(ZombieType type);
     void setSpeed(float speed);
+    int getSpeed();
     bool isDead();
     int getStrenght();
+    int getHealth();
+    bool getHitted();
 
 private:
+    Sprite zombie;
+    Texture texture;
+    ZombieType type;
     int health;
     int damage;
     float speed;
-    Texture texture;
-    ZombieType type;
-    Sprite zombie;
     bool status;
     void initZombie(float scale);
     void hittedTexture();

@@ -88,6 +88,9 @@ bool Zombie::isDead() {
 void Zombie::setSpeed(float speed) {
     Zombie::speed = speed;
 }
+int Zombie::getSpeed() {
+    return speed;
+}
 
 int Zombie::getStrenght(){
     return damage;
@@ -132,4 +135,23 @@ void Zombie::normalTexture() {
             }
     }
 }
+
+bool Zombie::getHitted() {
+    return hitted;
+}
+
+Sprite Zombie::getSprite(ZombieType type) {
+    Zombie zombie(0,0,type);
+    return zombie.zombie;
+}
+
+ZombieType Zombie::getType(ZombieType type) {
+    Zombie zombie(0,0,type);
+    return zombie.type;
+}
+
+int Zombie::getHealth() {
+    return health;
+}
+
 
