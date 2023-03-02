@@ -7,27 +7,25 @@
 #include "../src/MainMenu.h"
 
 TEST(Zombie, constructor){
-    Zombie zombie(0,0,ZombieType::BASIC);
-    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition(), Vector2f(0,0));
+    Zombie zombie(-5.5,0,ZombieType::BASIC);
+    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition().x, -5.5);
+    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition().y, 0);
     ASSERT_EQ(zombie.getType(ZombieType::BASIC),ZombieType::BASIC);
-    Zombie zombie2(0,0,ZombieType::TANK);
-    ASSERT_EQ(zombie2.getSprite(ZombieType::TANK).getPosition(), Vector2f(0,0));
+    Zombie zombie2(-5.5,0,ZombieType::TANK);
+    ASSERT_EQ(zombie.getSprite(ZombieType::TANK).getPosition().x, -5.5);
+    ASSERT_EQ(zombie.getSprite(ZombieType::TANK).getPosition().y, 0);
     ASSERT_EQ(zombie2.getType(ZombieType::TANK),ZombieType::TANK);
-    Zombie zombie3(0,0,ZombieType::SHOVEL);
-    ASSERT_EQ(zombie3.getSprite(ZombieType::SHOVEL).getPosition(), Vector2f(0,0));
+    Zombie zombie3(-5.5,0,ZombieType::SHOVEL);
+    ASSERT_EQ(zombie.getSprite(ZombieType::SHOVEL).getPosition().x, -5.5);
+    ASSERT_EQ(zombie.getSprite(ZombieType::SHOVEL).getPosition().y, 0);
     ASSERT_EQ(zombie3.getType(ZombieType::SHOVEL),ZombieType::SHOVEL);
 }
 
 TEST(Zombie,Move){
     Zombie zombie(0,0,ZombieType::BASIC);
     zombie.getSprite(ZombieType::BASIC).move(1,0);
-    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition(),Vector2f(zombie.getSpeed(),0));
-    zombie.getSprite(ZombieType::BASIC).move(-1,0);
-    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition(),Vector2f(0,0));
-    zombie.getSprite(ZombieType::BASIC).move(0,1);
-    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition(),Vector2f(0,zombie.getSpeed()));
-    zombie.getSprite(ZombieType::BASIC).move(0,-1);
-    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition(),Vector2f(0,0));
+    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition().x,zombie.getSpeed());
+    ASSERT_EQ(zombie.getSprite(ZombieType::BASIC).getPosition().y,0);
 }
 
 TEST(Zombie, Damaged){

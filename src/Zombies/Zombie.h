@@ -33,7 +33,7 @@ public:
     Sprite getSprite(ZombieType type);
     ZombieType getType(ZombieType type);
     void setSpeed(float speed);
-    int getSpeed();
+    float getSpeed();
     bool isDead();
     int getStrenght();
     int getHealth();

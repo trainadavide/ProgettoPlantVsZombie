@@ -88,7 +88,7 @@ bool Zombie::isDead() {
 void Zombie::setSpeed(float speed) {
     Zombie::speed = speed;
 }
-int Zombie::getSpeed() {
+float Zombie::getSpeed() {
     return speed;
 }
 
