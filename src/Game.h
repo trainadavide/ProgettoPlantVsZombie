@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Bullet.h"
+#include "Observer.h"
 
 using namespace std;
 
@@ -44,6 +45,7 @@ private:
     Timer* crono;
     Map* map;
     bool incremented;
+    Observer* observer;
 
     //button
 
@@ -51,6 +53,7 @@ private:
     Button* buttons[NUMBEROFPLANTS];
 
     void initVariables();
+    void renderAchievements();
     void initWindow();
     void initTextures();
     void pollEvents();

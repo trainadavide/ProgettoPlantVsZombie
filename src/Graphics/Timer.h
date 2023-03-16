@@ -14,7 +14,7 @@ public:
     Timer();
     ~Timer();
     int getTime();
-
+    void restart();
 private:
     Clock* timer;
 

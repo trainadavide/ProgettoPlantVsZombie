@@ -19,6 +19,7 @@ Game::Game() {
     map =new Map();
 
     incremented=false;
+    observer = new Observer(window);
 
     //plant's buttons
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
@@ -128,6 +129,8 @@ void Game::render() {
         bullet->draw(window);
     }
 
+    renderAchievements();
+
     window->display();
 }
 
@@ -141,7 +144,7 @@ void Game::initWindow() {
     vm.width = VideoMode::getDesktopMode().width;
     //create window
     window = new RenderWindow(vm, "PlantsVSZombies", sf::Style::Titlebar);
-    window->setFramerateLimit(60);
+    window->setFramerateLimit(120);
 }
 
 void Game::drawBackground(){
@@ -223,7 +226,6 @@ void Game::updateZombies() {
 void Game::updateBullets() {
     for (int k = 0; k < bullets.size(); k++) {
         //to move zombies
-        //TODO using delta time to move zombies
         bullets[k]->update();
         //removing zombies who reach the end
         if (bullets[k]->getPosition() > window->getSize().x)//checking x position of bullets
@@ -245,12 +247,18 @@ void Game::Collisions() {
                 zombies[i]->takeDamage(bullets[k]->getPower());
                 if(zombies[i]->isDead()){
                     zombies.erase(zombies.begin()+i);
+                    observer->update();
                 }
                 bullets.erase(bullets.begin()+k);
                 i=zombies.size();
             }
         }
     }
+}
+
+void Game::renderAchievements() {
+    if(observer->isDrawable())
+        observer->draw(this->window);
 }
 
 

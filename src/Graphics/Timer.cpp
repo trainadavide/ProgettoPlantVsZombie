@@ -16,3 +16,7 @@ Timer::Timer() {
 int Timer::getTime() {
     return (int) timer->getElapsedTime().asSeconds();
 }
+
+void Timer::restart() {
+    timer->restart();
+}
