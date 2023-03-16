@@ -192,6 +192,7 @@ void Game::updateZombies() {
     if (crono->getTime() >= 0) {
         type = ZombieType::BASIC;
         if (crono->getTime() >= 20) {
+            spawnTimer+= 0.03f;
             if (x <= 3) {
                 type = ZombieType::BASIC;
             } else if (x > 3 && x < 6) {
@@ -199,6 +200,9 @@ void Game::updateZombies() {
             } else {
                 type = ZombieType::SHOVEL;
             }
+        }
+        if(crono->getTime() >=35){
+            spawnTimer+=0.05f;
         }
 
         //time gap between spawns
