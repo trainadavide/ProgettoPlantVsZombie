@@ -47,6 +47,10 @@ void Zombie::initZombie(float scale) {
     }
     zombie.setTexture(texture);
     speed=-5.5f;
+    maxHealth = health;
+
+    hpShape.setFillColor(sf::Color::Green);
+    hpShape.setSize(sf::Vector2f(zombie.getGlobalBounds().width, zombie.getGlobalBounds().width/8));
 
 }
 
@@ -60,6 +64,8 @@ void Zombie::renderZombie(RenderTarget *target) {
             normalTexture();
     }
     target->draw(zombie);
+    hpShape.setPosition(zombie.getPosition().x, zombie.getPosition().y + zombie.getGlobalBounds().height + hpShape.getGlobalBounds().height/2 );
+    target->draw(hpShape);
 }
 //Accessors
 FloatRect Zombie:: getBounds() const
@@ -76,6 +82,7 @@ void Zombie::takeDamage(int power) {
     hittedTexture();
     c->restart();
     hitted=true;
+    hpShape.setSize(sf::Vector2f(zombie.getGlobalBounds().width*((float)health/(float)maxHealth), hpShape.getGlobalBounds().height));
 }
 
 bool Zombie::isDead() {

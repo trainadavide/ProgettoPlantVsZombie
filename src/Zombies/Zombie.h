@@ -45,8 +45,10 @@ private:
     ZombieType type;
     int health;
     int damage;
+    int maxHealth;
     float speed;
     bool status;
+    RectangleShape hpShape;
     void initZombie(float scale);
     void hittedTexture();
     void normalTexture();
