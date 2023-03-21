@@ -4,6 +4,7 @@
 #include "Game.h"
 #include "Graphics/Button.h"
 #include <cstdlib>
+#include <windows.h>
 #include <ctime>
 
 Game::Game() {
@@ -19,7 +20,7 @@ Game::Game() {
     map =new Map();
 
     incremented=false;
-    observer = new Observer(window);
+    observer = new KillAchieve(window);
 
     //plant's buttons
     for(int i = 0 ; i<NUMBEROFPLANTS; i++)
@@ -217,9 +218,12 @@ void Game::updateZombies() {
                 zombies[k]->update();
 
             //removing zombies who reach the end
-            if (zombies[k]->getBounds().left > window->getSize().x)//checking x position of zombies
+            if (zombies[k]->getBounds().left < -10)//checking x position of zombies
             {
                 zombies.erase(zombies.begin() + k);
+                displayGameOver();
+                Sleep(4000);
+                window->close();
             }
         }
     }
@@ -262,7 +266,32 @@ void Game::Collisions() {
 
 void Game::renderAchievements() {
     if(observer->isDrawable())
-        observer->draw(this->window);
+        observer->draw();
+}
+
+void Game::displayGameOver() {
+
+    Font textFont;
+    Text gameOver;
+    String s=" The Zombies \n    Ate Your \n    BRAINS!";
+    gameOver.setString(s);
+    if(!textFont.loadFromFile("./font/octosquare/octosquare.ttf")){
+        printf("Font doesn't load");
+    }
+    gameOver.setFillColor(sf::Color::Green);
+    gameOver.setFont(textFont);
+    gameOver.setScale(10,10);
+    gameOver.setPosition(200,200);
+
+    Text gameOver2;
+    gameOver2.setString(s);
+    gameOver2.setFillColor(sf::Color::Black);
+    gameOver2.setFont(textFont);
+    gameOver2.setScale(10,10);
+    gameOver2.setPosition(220,220);
+    window->draw(gameOver2);
+    window->draw(gameOver);
+    window->display();
 }
 
 

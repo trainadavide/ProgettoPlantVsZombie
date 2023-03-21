@@ -13,7 +13,7 @@
 #include "Player.h"
 #include "Map.h"
 #include "Bullet.h"
-#include "Observer.h"
+#include "KillAchieve.h"
 
 using namespace std;
 
@@ -45,7 +45,7 @@ private:
     Timer* crono;
     Map* map;
     bool incremented;
-    Observer* observer;
+    KillAchieve* observer;
 
     //button
 
@@ -68,6 +68,10 @@ private:
     ZombieType type;
     void initZombieVariables();
     void Collisions();
+
+    //display GameOver
+    void displayGameOver();
+
 
 
 
