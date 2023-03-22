@@ -51,6 +51,9 @@ Plant::Plant(int x, int y, PlantType type, unsigned int screenXSize) {
             break;
     }
     plant.setTexture(t);
+    maxHealth=hp;
+    hpShape.setFillColor(sf::Color::Green);
+    hpShape.setSize(sf::Vector2f(plant.getGlobalBounds().width, plant.getGlobalBounds().width/8));
 }
 
 void Plant::takeDamage(int damage) {
@@ -58,6 +61,8 @@ void Plant::takeDamage(int damage) {
     hittedTexture();
     c->restart();
     hitted=true;
+    hpShape.setSize(sf::Vector2f(plant.getGlobalBounds().width*((float)hp/(float)maxHealth), hpShape.getGlobalBounds().height));
+
 }
 
 //used to distinguish a type of plant from another on the map
@@ -85,7 +90,10 @@ void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
             hitted=false;
         }
     }
+
+    hpShape.setPosition(plant.getPosition().x, plant.getPosition().y + plant.getGlobalBounds().height + hpShape.getGlobalBounds().height/2 );
     target->draw(plant);
+    target->draw(hpShape);
 }
 
 //if the plant is a sunflower it can produce energy

@@ -40,6 +40,8 @@ private:
     void normalTexture();
     Clock* c = nullptr;
     bool hitted=false;
+    RectangleShape hpShape;
+    int maxHealth;
 
 public:
     Clock* getClock();
