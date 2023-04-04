@@ -31,7 +31,6 @@ public:
     //enemies
     void updateZombies();
     void updateBullets();
-
 private:
 
     RenderWindow* window;
@@ -58,6 +57,7 @@ private:
     void initTextures();
     void pollEvents();
     void drawBackground();
+
     //Enemies
     float rows[5]={0,0,0,0,0};
     float spawnTimer;

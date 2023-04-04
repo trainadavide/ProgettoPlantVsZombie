@@ -36,6 +36,7 @@ public:
     sf::Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);
     bool checkCollision(Zombie* enemy);
     void hitPlant(Zombie* enemy);
+    Vector2<float> getPlantPosition(int x, int y);
 };
 
 

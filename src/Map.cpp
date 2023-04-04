@@ -153,4 +153,8 @@ void Map::hitPlant(Zombie* enemy){
     }
 }
 
+Vector2<float> Map::getPlantPosition(int x, int y){
+    return {grid[x][y]->getSprite(PlantType::SUNFLOWER).getPosition().x,grid[x][y]->getSprite(PlantType::SUNFLOWER).getPosition().y};
+}
+
 #pragma clang diagnostic pop

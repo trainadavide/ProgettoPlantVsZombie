@@ -9,10 +9,8 @@ Zombie::Zombie(float x,float y,ZombieType type) {
     float scale = (float)(PROPORTION_CONST*x)/ZOMBIES_IMAGES_DIM;
     initZombie(scale);
     zombie.setPosition(x,y);
-    update();
 
     c=new Clock();
-
 }
 Zombie::~Zombie() = default;
 
