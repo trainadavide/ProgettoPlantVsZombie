@@ -23,11 +23,11 @@ public:
 
     void draw(sf::RenderTarget *target);
     void update();
-    int getPosition();
+    const int getPosition();
     //to move
     FloatRect getBounds() const;
 
-    int getPower() const;
+    const int getPower() const;
 
     bool isIce() const;
 

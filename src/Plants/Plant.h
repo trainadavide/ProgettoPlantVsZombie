@@ -46,7 +46,7 @@ private:
 public:
     Clock* getClock();
 
-    int getHp() const;
+    const int getHp() const;
 
     char getType();
 
@@ -61,7 +61,7 @@ public:
 
     FloatRect getBounds() const;
 
-    static void makeEnergy(Player &p);
+    const static void makeEnergy(Player &p);
 
     Plant(int x, int y, PlantType type,unsigned int screenXSize);
     Plant();

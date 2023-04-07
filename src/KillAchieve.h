@@ -20,8 +20,8 @@ class KillAchieve: public Observer{
 
     public:
         KillAchieve(sf::RenderTarget* window);
-        virtual void update();
-        void draw();
+        void update() override;
+        const void draw();
         bool isDrawable();
 
 };

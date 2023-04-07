@@ -56,9 +56,6 @@ Map::Map() {
             j= nullptr;
         }
     }
-    //initialize all lawnmower true
-    for(bool & i : lawnmower)
-        i=true;
 
 }
 

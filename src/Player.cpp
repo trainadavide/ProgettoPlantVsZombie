@@ -76,7 +76,7 @@ void Player::update(){
     selectedDisplay.setString(testo);
 }
 
-int Player::getEnergy() const {
+const int Player::getEnergy() const {
     return energy;
 }
 

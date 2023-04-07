@@ -31,12 +31,12 @@ public:
     void takeDamage(int power);
     //getter and setter
     Sprite getSprite(ZombieType type);
-    ZombieType getType(ZombieType type);
+    const ZombieType getType(ZombieType type);
     void setSpeed(float speed);
-    float getSpeed();
+    const float getSpeed();
     bool isDead();
-    int getStrenght();
-    int getHealth();
+    const int getStrenght();
+    const int getHealth();
     bool getHitted();
 
 private:

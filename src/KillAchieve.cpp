@@ -46,7 +46,7 @@ void KillAchieve::displayAchievements() {
     achieve.setString(text);
 }
 
-void KillAchieve::draw() {
+const void KillAchieve::draw() {
     window->draw(display);
     window->draw(achieve);
 }

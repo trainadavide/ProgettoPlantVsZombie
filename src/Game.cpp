@@ -243,7 +243,7 @@ void Game::updateBullets() {
     }
 }
 //collisions
-void Game::Collisions() {
+const void Game::Collisions() {
     if(!bullets.empty() && !zombies.empty())
     for(int k=0;k<bullets.size(); k++){
         for(int i=0;i<zombies.size();i++){

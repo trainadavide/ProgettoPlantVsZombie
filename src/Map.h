@@ -24,7 +24,7 @@
 class Map {
 private:
     std::unique_ptr<Plant> grid [LENGTH_GRID][WIDTH_GRID];
-    bool lawnmower [WIDTH_GRID];
+
     sf::RectangleShape garden;
 public:
     Map();
@@ -33,7 +33,7 @@ public:
     void actions(Player &player, std::vector<Bullet*> &bullets, int screensize);
     bool isEmpty(int x, int y);
     bool isOver(const sf::Vector2<float> &point);
-    sf::Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);
+    Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);
     bool checkCollision(Zombie* enemy);
     void hitPlant(Zombie* enemy);
     Vector2<float> getPlantPosition(int x, int y);

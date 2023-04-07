@@ -38,7 +38,7 @@ void Bullet::update() {
     bull.move({10,0});
 }
 
-int Bullet::getPosition(){
+const int Bullet::getPosition(){
     return bull.getPosition().x;
 }
 
@@ -46,7 +46,7 @@ FloatRect Bullet::getBounds() const {
     return bull.getGlobalBounds();
 }
 
-int Bullet::getPower() const {
+const int Bullet::getPower() const {
     return power;
 }
 

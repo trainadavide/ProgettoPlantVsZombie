@@ -77,7 +77,7 @@ char Plant::getType() {
     }
 }
 
-int Plant::getHp() const {
+const int Plant::getHp() const {
     return hp;
 }
 
@@ -97,7 +97,7 @@ void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
 }
 
 //if the plant is a sunflower it can produce energy
-void Plant::makeEnergy(Player &p) {
+const void Plant::makeEnergy(Player &p) {
         p.increaseEnergy();
 }
 

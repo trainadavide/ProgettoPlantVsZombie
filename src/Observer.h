@@ -12,11 +12,12 @@ class Observer {
 protected:
     sf::RenderTarget* window;
     sf::Font textFont;
-
+    void initFont();
 public:
     Observer(sf::RenderTarget* window);
     virtual ~Observer() = default;
-    void initFont();
+    virtual void update(){};
+
 };
 
 
