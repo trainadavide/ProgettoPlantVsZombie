@@ -46,12 +46,13 @@ private:
 public:
     Clock* getClock();
 
-    const int getHp() const;
+    int getHp() const;
 
-    char getType();
+    char getType() const;
 
-    bool getHitted();
-    Sprite getSprite(PlantType Type);
+    bool getHitted() const;
+
+    Sprite getSprite(PlantType Type) const;
 
     void takeDamage(int damage);
 
@@ -61,7 +62,7 @@ public:
 
     FloatRect getBounds() const;
 
-    const static void makeEnergy(Player &p);
+    static void makeEnergy(Player &p);
 
     Plant(int x, int y, PlantType type,unsigned int screenXSize);
     Plant();

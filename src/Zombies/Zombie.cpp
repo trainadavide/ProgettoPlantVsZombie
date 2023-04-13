@@ -93,11 +93,11 @@ bool Zombie::isDead() {
 void Zombie::setSpeed(float speed) {
     Zombie::speed = speed;
 }
-const float Zombie::getSpeed() {
+float Zombie::getSpeed() const{
     return speed;
 }
 
-const int Zombie::getStrenght(){
+int Zombie::getStrenght() const{
     return damage;
 }
 
@@ -141,21 +141,21 @@ void Zombie::normalTexture() {
     }
 }
 
-bool Zombie::getHitted() {
+bool Zombie::getHitted() const{
     return hitted;
 }
 
-Sprite Zombie::getSprite(ZombieType type) {
+Sprite Zombie::getSprite(ZombieType type) const{
     Zombie zombie(0,0,type);
     return zombie.zombie;
 }
 
-const ZombieType Zombie::getType(ZombieType type) {
+ZombieType Zombie::getType(ZombieType type) const{
     Zombie zombie(0,0,type);
     return zombie.type;
 }
 
-const int Zombie::getHealth() {
+int Zombie::getHealth() const{
     return health;
 }
 

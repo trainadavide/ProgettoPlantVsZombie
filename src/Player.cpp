@@ -76,7 +76,7 @@ void Player::update(){
     selectedDisplay.setString(testo);
 }
 
-const int Player::getEnergy() const {
+int Player::getEnergy() const {
     return energy;
 }
 
@@ -88,11 +88,8 @@ void Player::decreaseEnergy(int e) {
     energy-=e;
 }
 
-sf::Text Player::getenergyisplay() {
+sf::Text Player::getenergyisplay() const{
     return energyDisplay;
 }
 
-sf::RectangleShape Player::getplayerInfo() {
-    return playerInfo;
-}
 

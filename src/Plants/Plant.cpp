@@ -66,7 +66,7 @@ void Plant::takeDamage(int damage) {
 }
 
 //used to distinguish a type of plant from another on the map
-char Plant::getType() {
+char Plant::getType() const{
     switch (type) {
         case PlantType::SUNFLOWER:
             return 's';
@@ -77,7 +77,7 @@ char Plant::getType() {
     }
 }
 
-const int Plant::getHp() const {
+int Plant::getHp() const {
     return hp;
 }
 
@@ -97,7 +97,7 @@ void Plant::draw(int posx, int posy, sf::RenderTarget* target) {
 }
 
 //if the plant is a sunflower it can produce energy
-const void Plant::makeEnergy(Player &p) {
+void Plant::makeEnergy(Player &p) {
         p.increaseEnergy();
 }
 
@@ -166,12 +166,12 @@ void Plant::shoot(vector<Bullet *> &bullets, int screensize) {
     }
 }
 
-Sprite Plant::getSprite(PlantType Type) {
+Sprite Plant::getSprite(PlantType Type) const{
     Plant plant(0,0,Type,30);
     return plant.plant;
 }
 
-bool Plant::getHitted() {
+bool Plant::getHitted() const{
     return hitted;
 }
 

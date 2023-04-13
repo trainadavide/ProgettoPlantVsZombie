@@ -31,10 +31,10 @@ public:
     void draw(sf::RenderTarget* target);
     void setPlant(int x, int y, Player &player, sf::Vector2<unsigned int> screenSize);
     void actions(Player &player, std::vector<Bullet*> &bullets, int screensize);
-    bool isEmpty(int x, int y);
-    bool isOver(const sf::Vector2<float> &point);
+    bool isEmpty(int x, int y) const;
+    bool isOver(const sf::Vector2<float> &point) const;
     Vector2<unsigned int> getPosition(const sf::Vector2<float> &point);
-    bool checkCollision(Zombie* enemy);
+    bool checkCollision(Zombie* enemy) const;
     void hitPlant(Zombie* enemy);
     Vector2<float> getPlantPosition(int x, int y);
 };

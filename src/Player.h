@@ -32,10 +32,9 @@ public:
     void increaseEnergy();
     void select(int selected);
     void decreaseEnergy(int e);
-    const int getEnergy() const;
+    int getEnergy() const;
     int getSelectedPlant() const;
-    sf::Text getenergyisplay();
-    sf::RectangleShape getplayerInfo();
+    sf::Text getenergyisplay() const;
 };
 
 

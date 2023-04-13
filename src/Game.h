@@ -67,7 +67,7 @@ private:
     vector<Bullet*> bullets;
     ZombieType type;
     void initZombieVariables();
-    const void Collisions();
+    void Collisions();
 
     //display GameOver
     void displayGameOver();

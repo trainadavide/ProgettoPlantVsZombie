@@ -43,7 +43,7 @@ void Map::setPlant(int x, int y, Player &player, Vector2<unsigned int> screenSiz
 
 }
 //control if a certain position of the grid is empty
-bool Map::isEmpty(int x, int y) {
+bool Map::isEmpty(int x, int y) const{
     if(grid[x][y]== nullptr)
         return true;
     return false;
@@ -94,7 +94,7 @@ sf::Vector2<unsigned int> Map::getPosition(const sf::Vector2<float> &point) {
     return {x,y};
 }
 
-bool Map::isOver(const sf::Vector2<float> &point) {
+bool Map::isOver(const sf::Vector2<float> &point) const{
     if(garden.getGlobalBounds().contains(point))
         return true;
     else
@@ -127,7 +127,7 @@ void Map::actions(Player &player, std::vector<Bullet*> &bullets, int screensize)
     std::cout<<endl;
 }
 
-bool Map::checkCollision(Zombie* enemy) {
+bool Map::checkCollision(Zombie* enemy) const{
     bool collision=false;
     for (int i = 0; i < WIDTH_GRID*LENGTH_GRID; ++i) {
         if(grid[i/WIDTH_GRID][i%WIDTH_GRID] != nullptr) {
